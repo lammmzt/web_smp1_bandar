@@ -31,9 +31,9 @@ class Database extends Config
         // 'password'     => '',
         // 'database'     => 'web_sekolah',
 
-        'username'     => 'smpn2bandar',
-        'password'     => 'smpn2bandar321',
-        'database'     => 'smpn2bandar',
+        'username'     => 'smpn1bandar',
+        'password'     => 'smpn1bandar321',
+        'database'     => 'smpn1bandar',
 
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',

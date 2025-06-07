@@ -17,7 +17,7 @@ class App extends BaseConfig
      * E.g., http://example.com/
      */
     // public string $baseURL = 'http://localhost/web_sekolah/public/';
-    public string $baseURL = 'https://smpn2bandar.free-domainku.my.id/';
+    public string $baseURL = 'https://smpn1bandar.free-domainku.my.id/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
