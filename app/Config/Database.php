@@ -27,9 +27,14 @@ class Database extends Config
     public array $default = [
         'DSN'          => '',
         'hostname'     => 'localhost',
-        'username'     => 'root',
-        'password'     => '',
-        'database'     => 'web_sekolah',
+        // 'username'     => 'root',
+        // 'password'     => '',
+        // 'database'     => 'web_sekolah',
+
+        'username'     => 'smpn2bandar',
+        'password'     => 'smpn2bandar321',
+        'database'     => 'smpn2bandar',
+
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,
