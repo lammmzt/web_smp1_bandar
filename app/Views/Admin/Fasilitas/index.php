@@ -50,10 +50,10 @@
                                 <td class="text-center align-middle">
                                     <?= $no++; ?></td>
                                 <td class="text-center"><a
-                                        href="<?= base_url('Assets/img/Fasilitas/' . $value['foto_fasilitas']); ?>"
+                                        href="<?= base_url('Assets/img/fasilitas/' . $value['foto_fasilitas']); ?>"
                                         target="_blank" data-fancybox="gallery"
                                         data-caption="<?= $value['nama_fasilitas']; ?>">
-                                        <img src="<?= base_url('Assets/img/Fasilitas/' . $value['foto_fasilitas']); ?>"
+                                        <img src="<?= base_url('Assets/img/fasilitas/' . $value['foto_fasilitas']); ?>"
                                             alt="Foto" width="70"></a>
                                 </td>
                                 <td class="align-middle"><?= $value['nama_fasilitas']; ?></td>

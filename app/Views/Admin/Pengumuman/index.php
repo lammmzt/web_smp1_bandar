@@ -65,9 +65,9 @@
                                     <?php 
                                     if ($value['type_media'] == '0') {
                                         echo '<a
-                                        href="' . base_url('Assets/img/Pengumuman/' . $value['nama_media']) . '"
+                                        href="' . base_url('Assets/img/pengumuman/' . $value['nama_media']) . '"
                                         target="_blank" data-fancybox="gallery"
-                                        data-caption="' . $value['judul_pengumuman'] . '"><img src="' . base_url('Assets/img/Pengumuman/' . $value['nama_media']) . '"
+                                        data-caption="' . $value['judul_pengumuman'] . '"><img src="' . base_url('Assets/img/pengumuman/' . $value['nama_media']) . '"
                                             class="img-fluid" width="100" height="100"></a>';
                                     } else {
                                         echo '<iframe width="100" height="100" src="' . $value['nama_media'] . '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';

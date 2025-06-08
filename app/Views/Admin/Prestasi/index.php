@@ -51,10 +51,10 @@
                                 <td class="text-center align-middle">
                                     <?= $no++; ?></td>
                                 <td class="text-center"><a
-                                        href="<?= base_url('Assets/img/Prestasi/' . $value['foto_prestasi']); ?>"
+                                        href="<?= base_url('Assets/img/prestasi/' . $value['foto_prestasi']); ?>"
                                         target="_blank" data-fancybox="gallery"
                                         data-caption="<?= $value['judul_prestasi']; ?>">
-                                        <img src="<?= base_url('Assets/img/Prestasi/' . $value['foto_prestasi']); ?>"
+                                        <img src="<?= base_url('Assets/img/prestasi/' . $value['foto_prestasi']); ?>"
                                             alt="Foto" width="70"></a>
                                 </td>
                                 <td class="align-middle"><?= $value['judul_prestasi']; ?></td>
