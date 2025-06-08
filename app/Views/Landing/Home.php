@@ -237,6 +237,9 @@
             </div><!-- End post item -->
             <?php endforeach;
             ?>
+            <span class="d-block mb-2 text-center mt-4" data-aos="fade-up" data-aos-delay="100">
+                <a href="<?= base_url('Pengumuman'); ?>" class="btn btn-primary">Lihat Semua Pengumuman</a>
+            </span>
             <?php
             else : ?>
             <div class="col-lg-12 text-center" data-aos="fade-up" data-aos-delay="100">
@@ -246,9 +249,7 @@
             endif;
             ?>
         </div>
-        <span class="d-block mb-2 text-center mt-4" data-aos="fade-up" data-aos-delay="100">
-            <a href="<?= base_url('Pengumuman'); ?>" class="btn btn-primary">Lihat Semua Pengumuman</a>
-        </span>
+
     </div>
 
 </section><!-- /Recent Posts Section -->
