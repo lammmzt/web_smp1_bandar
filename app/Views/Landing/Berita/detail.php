@@ -6,9 +6,12 @@
         <div class="container">
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
-                    <h1>Berita</h1>
+                    <h1>Detail Berita</h1>
                     <p class="mb-0">
-                        Berita terbaru dari <?= $data_sekolah['nama_sekolah']; ?>.
+                        Detail berita <?= $detail_berita['judul_pengumuman']; ?> yang diposting pada
+                        <?= date('d M Y', strtotime($detail_berita['created_at'])); ?> oleh
+                        <?= $detail_berita['nama_user']; ?>.
+                        <br>
                     </p>
                 </div>
             </div>
@@ -18,7 +21,7 @@
         <div class="container">
             <ol>
                 <li><a href="<?= base_url('/'); ?>">Home</a></li>
-                <li class="current"><?= base_url('Berita'); ?>">Berita</a></li>
+                <li><a href="<?= base_url('Berita'); ?>">Berita</a></li>
                 <li class="current"><?= $active; ?></li>
             </ol>
         </div>
