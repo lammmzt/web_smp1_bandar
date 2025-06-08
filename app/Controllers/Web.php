@@ -71,7 +71,7 @@ class Web extends BaseController
         $data['data_sekolah'] = $modelSekolah->first(); // ambil data sekolah
         $data['cari'] = $cari; // kirim data pencarian ke view
         $data['title'] = 'Berita SMP NEGERI 1 Bandar'; // set judul
-        $data['active'] = 'Detaail Berita'; // set active menu
+        $data['active'] = 'Berita'; // set active menu
         return view('Landing/Berita/index', $data); // mengirim data ke view
     }
 
@@ -91,7 +91,7 @@ class Web extends BaseController
         $data['detail_berita'] = $model->getPengumuman()->where(['id_pengumuman' => $id_pengumuman])->first(); // ambil data berita berdasarkan slug
         $data['data_sekolah'] = $modelSekolah->first(); // ambil data sekolah
         $data['title'] = 'Detail Berita SMP NEGERI 1 Bandar'; // set judul
-        $data['active'] = 'Berita'; // set active menu
+        $data['active'] = 'Detaail Berita'; // set active menu
         return view('Landing/Berita/detail', $data); // mengirim data ke view
     }
 }
