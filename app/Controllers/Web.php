@@ -67,6 +67,7 @@ class Web extends BaseController
         } else {
             $data['data_berita'] = $model->getPengumuman()->where(['tipe_pengumuman' => '0'])->orderBy('created_at', 'DESC')->findAll(); // ambil data berita
         }
+        $data['data_berita_baru'] = $model->getPengumuman()->where(['tipe_pengumuman' => '0'])->orderBy('created_at', 'DESC')->findAll(); // ambil data berita
         $data['data_sekolah'] = $modelSekolah->first(); // ambil data sekolah
         $data['cari'] = $cari; // kirim data pencarian ke view
         $data['title'] = 'Berita SMP NEGERI 1 Bandar'; // set judul

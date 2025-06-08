@@ -167,9 +167,9 @@
                     <h3 class="widget-title">Postingan Terbaru</h3>
 
                     <?php 
-                        if (!empty($data_berita)) :
+                        if (!empty($data_berita_baru)) :
                             $no = 1;
-                            foreach ($data_berita as $berita) :
+                            foreach ($data_berita_baru as $berita) :
                             if ($no > 5) break; // Batasi hanya 5 postingan terbaru
                             $no++;
                     ?>
