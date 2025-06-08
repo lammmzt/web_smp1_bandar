@@ -18,6 +18,7 @@
         <div class="container">
             <ol>
                 <li><a href="<?= base_url('/'); ?>">Home</a></li>
+                <li class="current"><?= base_url('Berita'); ?>">Berita</a></li>
                 <li class="current"><?= $active; ?></li>
             </ol>
         </div>
