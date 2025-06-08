@@ -162,6 +162,7 @@
             </div>
         </div> -->
 
+
         <div class="container copyright text-center mt-4">
             <p>© <span>Copyright</span> <strong class="px-1 sitename">
                     <?= $data_sekolah['nama_sekolah']; ?>
@@ -175,7 +176,6 @@
                 Developed by <a href="" target="_blank">Dolsa</a></a>
             </div>
         </div>
-
     </footer>
 
     <!-- Scroll Top -->

@@ -37,9 +37,10 @@
                         <thead class="thead-light">
                             <tr class="text-center">
                                 <th>No</th>
-                                <th>Foto</th>
+                                <th>Tipe</th>
+                                <th>Tanggal</th>
+                                <th>File Media</th>
                                 <th>Nama pengumuman</th>
-                                <th>Type</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
@@ -50,6 +51,16 @@
                             <tr>
                                 <td class="text-center align-middle">
                                     <?= $no++; ?></td>
+                                <td class="align-middle text-center">
+                                    <?php if ($value['tipe_pengumuman'] == '0') {
+                                        echo '<span class="badge badge-primary">Berita</span>';
+                                    } else {
+                                        echo '<span class="badge badge-danger">Pengumuman</span>';
+                                    } ?>
+                                </td>
+                                <td class="text-center align-middle">
+                                    <?= date('d-m-Y', strtotime($value['created_at'])); ?>
+                                </td>
                                 <td class="text-center">
                                     <?php 
                                     if ($value['type_media'] == '0') {
@@ -64,13 +75,7 @@
                                     ?>
                                 </td>
                                 <td class="align-middle"><?= $value['judul_pengumuman']; ?></td>
-                                <td class="align-middle text-center">
-                                    <?php if ($value['type_media'] == '0') {
-                                        echo '<span class="badge badge-primary">Foto</span>';
-                                    } else {
-                                        echo '<span class="badge badge-success">Video</span>';
-                                    } ?>
-                                </td>
+
                                 <td class="align-middle text-center">
                                     <!-- swithcer -->
                                     <div class="custom-control custom-switch">
@@ -117,6 +122,15 @@
                         <input type="text" name="judul_pengumuman" id="judul_pengumuman" class="form-control" required
                             placeholder="Masukkan judul pengumuman">
                     </div>
+                    <!-- Tipe pengumuman -->
+                    <div class="form-group mt-2">
+                        <label for="tipe_pengumuman">Tipe pengumuman</label>
+                        <select name="tipe_pengumuman" id="tipe_pengumuman" class="form-control" required>
+                            <option value="">Pilih Tipe pengumuman</option>
+                            <option value="0">Berita</option>
+                            <option value="1">Pengumuman Kegiatan</option>
+                        </select>
+                    </div>
                     <div class="form-group mt-2">
                         <label for="type_media">Tipe Media</label>
                         <select name="type_media" id="type_media" class="form-control" required>
@@ -137,9 +151,9 @@
                             placeholder="Masukkan link video youtube">
                         <small class="text-danger ">*Pastikan link video youtube yang diinputkan adalah link
                             embed video
-                            <a href="https://www.youtube.com/embed/LFLRclv2ivI?si=QZO0csKMdH_Fz0R5" target="_blank">
+                            <a href="https://www.youtube.com/embed/_6i6fsa9TL4?si=G3MBxVqs-12OnPUz" target="_blank">
                                 Contoh :
-                                https://www.youtube.com/embed/LFLRclv2ivI?si=QZO0csKMdH_Fz0R5</a> </small>
+                                https://www.youtube.com/embed/_6i6fsa9TL4?si=G3MBxVqs-12OnPUz</a> </small>
                     </div>
                     <div class="form-group mt-2" id="preview_vid_div" style="display: none;">
                         <label for="preview_vid">Preview Video</label>
@@ -178,7 +192,8 @@
     aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <form action="<?= base_url('Pengumuman/ubah'); ?>" method="post" enctype="multipart/form-data">
+            <form enctype="multipart/form-data" class="form_edit" id="formEdit"
+                data-id="<?= $value['id_pengumuman']; ?>">
                 <div class="modal-header">
                     <h5 class="modal-title" id="editModalLabel">Edit Data pengumuman</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -193,8 +208,18 @@
                             value="<?= $value['judul_pengumuman']; ?>">
                     </div>
                     <div class="form-group mt-2">
+                        <label for="tipe_pengumuman">Tipe pengumuman</label>
+                        <select name="tipe_pengumuman" id="tipe_pengumuman" class="form-control" required>
+                            <option value="">Pilih Tipe pengumuman</option>
+                            <option value="0" <?= ($value['tipe_pengumuman'] == '0') ? 'selected' : ''; ?>>Berita
+                            </option>
+                            <option value="1" <?= ($value['tipe_pengumuman'] == '1') ? 'selected' : ''; ?>>Pengumuman
+                                Kegiatan</option>
+                        </select>
+                    </div>
+                    <div class="form-group mt-2">
                         <label for="type_media">Tipe Media</label>
-                        <select name="type_media" id="type_media" class="form-control" required readonly>
+                        <select name="type_media" id="type_media" class="form-control disabled" required>
                             <option value="">Pilih Tipe Media</option>
                             <option value="0" <?= ($value['type_media'] == '0') ? 'selected' : ''; ?>>Foto</option>
                             <option value="1" <?= ($value['type_media'] == '1') ? 'selected' : ''; ?>>Video</option>
@@ -411,6 +436,63 @@ $('#formAdd').submit(function(e) {
                 document.getElementById('btnSimpan').removeAttribute('disabled');
                 document.getElementById('btnSimpan').innerHTML = 'Simpan';
             }
+        },
+        error: function(xhr, status, error) {
+            Swal.fire({
+                title: 'Gagal',
+                text: 'Terjadi kesalahan saat menyimpan data',
+                icon: 'error',
+                timer: 2000
+            })
+            document.getElementById('btnSimpan').removeAttribute('disabled');
+            document.getElementById('btnSimpan').innerHTML = 'Simpan';
+        }
+    });
+});
+
+// update pengumuman 
+$('.form_edit').submit(function(e) {
+    e.preventDefault();
+    var id_pengumuman = $(this).data('id');
+    var deskripsi_pengumuman = $('#edit_deskripsi_pengumuman' + id_pengumuman + ' .ql-editor').html();
+    // console.log(deskripsi_pengumuman);
+    var form = new FormData(this);
+    form.append('deskripsi_pengumuman', deskripsi_pengumuman);
+    $.ajax({
+        url: '<?= base_url('Pengumuman/ubah'); ?>',
+        method: 'POST',
+        data: form,
+        contentType: false,
+        cache: false,
+        processData: false,
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == '200') {
+                Swal.fire({
+                    title: 'Berhasil',
+                    text: response.data,
+                    icon: 'success',
+                    timer: 2000
+                })
+                $('.form_edit')[0].reset();
+                $('.form_edit').closest('.modal').modal('hide');
+                window.location.reload();
+            } else {
+                Swal.fire({
+                    title: 'Gagal',
+                    text: response.data,
+                    icon: 'error',
+                    timer: 2000
+                })
+            }
+        },
+        error: function(xhr, status, error) {
+            Swal.fire({
+                title: 'Gagal',
+                text: 'Terjadi kesalahan saat mengubah data',
+                icon: 'error',
+                timer: 2000
+            })
         }
     });
 });

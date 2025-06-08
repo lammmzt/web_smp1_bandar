@@ -91,16 +91,17 @@
                         <div class="form-group ">
                             <label for="tlp_sekolah">Tlp</label>
                             <input type="text" name="tlp_sekolah" id="tlp_sekolah" class="form-control" required
-                                value="<?= $sekolah['tlp_sekolah']?>">
+                                value="<?= $sekolah['tlp_sekolah']?>" maxlength="13">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group ">
-                            <label for="akreditasi_sekolah">Akreditasi</label>
-                            <input type="text" name="akreditasi_sekolah" id="akreditasi_sekolah" class="form-control"
-                                required value="<?= $sekolah['akreditasi_sekolah']?>">
+                            <label for="no_wa_sekolah">No. wa</label>
+                            <input type="text" name="no_wa_sekolah" id="no_wa_sekolah" class="form-control" required
+                                value="<?= $sekolah['no_wa_sekolah']?>">
                         </div>
                     </div>
+
                     <div class="col-md-6">
                         <div class="form-group ">
                             <label for="visi_sekolah">Visi</label>
@@ -145,6 +146,13 @@
                             <label for="jumlah_siswa_sekolah">Jumlah Siswa</label>
                             <input type="number" name="jumlah_siswa_sekolah" id="jumlah_siswa_sekolah"
                                 class="form-control" value="<?= $sekolah['jumlah_siswa_sekolah']?>">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <label for="akreditasi_sekolah">Akreditasi</label>
+                            <input type="text" name="akreditasi_sekolah" id="akreditasi_sekolah" class="form-control"
+                                required value="<?= $sekolah['akreditasi_sekolah']?>">
                         </div>
                     </div>
 
@@ -365,7 +373,7 @@ var sambutan = new Quill('#sambutan_kepala_sekolah', {
     }
 
 });
-// sambutan.root.innerHTML = '<?= $sekolah['sambutan_kepala_sekolah']?>';
+sambutan.root.innerHTML = '<?= $sekolah['sambutan_kepala_sekolah']?>';
 
 // ajax request to update data sekolah
 document.getElementById('simpan').addEventListener('click', function() {
@@ -387,7 +395,8 @@ document.getElementById('simpan').addEventListener('click', function() {
         misi_sekolah: misi.root.innerHTML,
         sejarah_sekolah: sejarah.root.innerHTML,
         sambutan_kepala_sekolah: sambutan.root.innerHTML,
-        jumlah_siswa_sekolah: document.getElementById('jumlah_siswa_sekolah').value
+        jumlah_siswa_sekolah: document.getElementById('jumlah_siswa_sekolah').value,
+        no_wa_sekolah: document.getElementById('no_wa_sekolah').value
     }
     // console.log(data);
     $.ajax({

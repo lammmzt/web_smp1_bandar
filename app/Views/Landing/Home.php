@@ -43,11 +43,11 @@
                         <?= $data_sekolah['sambutan_kepala_sekolah']; ?>
                     </p>
                     <div class="text-center text-lg-start">
-                        <a href="#"
+                        <!-- <a href="#"
                             class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                             <span>Baca Selengkapnya</span>
                             <i class="bi bi-arrow-right"></i>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
             </div>
@@ -129,207 +129,122 @@
         <span class="badge bg-primary mb-3" data-aos="fade-up" data-aos-delay="100">Berita</span>
         </span>
         <div class="row gy-5">
-
-            <div class="col-xl-4 col-md-6">
-                <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
-
-                    <div class="post-img position-relative overflow-hidden">
-                        <img src="<?= base_url('Assets/LandingPage/'); ?>img/blog/blog-1.jpg" class="img-fluid" alt="">
-                        <span class="post-date">December 12</span>
-                    </div>
-
-                    <div class="post-content d-flex flex-column">
-
-                        <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
-
-                        <div class="meta d-flex align-items-center">
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-person"></i> <span class="ps-2">Julia Parker</span>
-                            </div>
-                            <span class="px-3 text-black-50">/</span>
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-folder2"></i> <span class="ps-2">Politics</span>
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i
-                                class="bi bi-arrow-right"></i></a>
-
-                    </div>
-
-                </div>
-            </div><!-- End post item -->
-
+            <?php 
+            if(!empty($data_berita)) :
+                $no = 1;
+                foreach ($data_berita as $berita) : 
+                if($no > 3) break; // Batasi hanya 2 berita yang ditampilkan
+                $no++;
+            ?>
             <div class="col-xl-4 col-md-6">
                 <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="200">
 
                     <div class="post-img position-relative overflow-hidden">
-                        <img src="<?= base_url('Assets/LandingPage/'); ?>img/blog/blog-2.jpg" class="img-fluid" alt="">
-                        <span class="post-date">July 17</span>
+                        <?php 
+                             if ($berita['type_media'] == '0') {
+                                echo '<img src="' . base_url('Assets/img/pengumuman/' . $berita['nama_media']) . '" class="img-fluid" alt="">';
+                            } else {
+                                echo '<iframe lass="img-fluid" width="100%" height="305" src="' . $berita['nama_media'] . '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                            }
+                        ?>
+
+                        <span class="post-date"><?= date('d F Y', strtotime($berita['created_at'])); ?></span>
                     </div>
 
                     <div class="post-content d-flex flex-column">
 
-                        <h3 class="post-title">Et repellendus molestiae qui est sed omnis</h3>
+                        <h3 class="post-title"><?= $berita['judul_pengumuman']; ?></h3>
 
                         <div class="meta d-flex align-items-center">
                             <div class="d-flex align-items-center">
-                                <i class="bi bi-person"></i> <span class="ps-2">Mario Douglas</span>
+                                <i class="bi bi-person"></i> <span class="ps-2"><?= $berita['nama_user']; ?></span>
                             </div>
-                            <span class="px-3 text-black-50">/</span>
+                            <span class="px-3 text-black-50">|</span>
                             <div class="d-flex align-items-center">
-                                <i class="bi bi-folder2"></i> <span class="ps-2">Sports</span>
+                                <i class="bi bi-clock"></i> <span
+                                    class="ps-2"><?= date('H:i', strtotime($berita['created_at'])); ?> WIB</span>
                             </div>
                         </div>
 
                         <hr>
 
-                        <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i
+                        <a href="<?= base_url('Berita/detail/' . $berita['id_pengumuman']); ?>"
+                            class="readmore stretched-link"><span>Baca Lebih Lanjut</span><i
                                 class="bi bi-arrow-right"></i></a>
 
                     </div>
-
                 </div>
             </div><!-- End post item -->
-
-            <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                <div class="post-item position-relative h-100">
-
-                    <div class="post-img position-relative overflow-hidden">
-                        <img src="<?= base_url('Assets/LandingPage/'); ?>img/blog/blog-3.jpg" class="img-fluid" alt="">
-                        <span class="post-date">September 05</span>
-                    </div>
-
-                    <div class="post-content d-flex flex-column">
-
-                        <h3 class="post-title">Quia assumenda est et veritati tirana ploder</h3>
-
-                        <div class="meta d-flex align-items-center">
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-person"></i> <span class="ps-2">Lisa Hunter</span>
-                            </div>
-                            <span class="px-3 text-black-50">/</span>
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-folder2"></i> <span class="ps-2">Economics</span>
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i
-                                class="bi bi-arrow-right"></i></a>
-
-                    </div>
-
-                </div>
-            </div><!-- End post item -->
+            <?php endforeach;
+            ?>
+            <span class="d-block mb-3 text-center mt-4" data-aos="fade-up" data-aos-delay="100">
+                <a href="<?= base_url('Berita'); ?>" class="btn btn-primary">Lihat Semua Berita</a>
+            </span>
+            <?php
+            else : ?>
+            <div class="col-lg-12 text-center" data-aos="fade-up" data-aos-delay="100">
+                <p>Tidak ada berita yang tersedia.</p>
+            </div>
+            <?php
+            endif;
+            ?>
 
         </div>
-        <span class="d-block mb-3 text-center mt-4" data-aos="fade-up" data-aos-delay="100">
-            <a href="<?= base_url('Berita'); ?>" class="btn btn-primary">Lihat Semua Berita</a>
-        </span>
+
         <hr class="my-5">
         <span class="badge bg-danger mb-3" data-aos="fade-up" data-aos-delay="100">Pengumuman</span>
         <div class="row gy-5">
-
-            <div class="col-xl-4 col-md-6">
-                <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
-
-                    <div class="post-img position-relative overflow-hidden">
-                        <img src="<?= base_url('Assets/LandingPage/'); ?>img/blog/blog-1.jpg" class="img-fluid" alt="">
-                        <span class="post-date">December 12</span>
-                    </div>
-
-                    <div class="post-content d-flex flex-column">
-
-                        <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
-
-                        <div class="meta d-flex align-items-center">
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-person"></i> <span class="ps-2">Julia Parker</span>
-                            </div>
-                            <span class="px-3 text-black-50">/</span>
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-folder2"></i> <span class="ps-2">Politics</span>
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i
-                                class="bi bi-arrow-right"></i></a>
-
-                    </div>
-
-                </div>
-            </div><!-- End post item -->
-
+            <?php
+            if(!empty($data_pengumuman)) :
+                $no = 1;
+                foreach ($data_pengumuman as $pengumuman) : 
+                if($no > 3) break; // Batasi hanya 2 pengumuman yang ditampilkan
+                $no++;
+            ?>
             <div class="col-xl-4 col-md-6">
                 <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="200">
 
                     <div class="post-img position-relative overflow-hidden">
-                        <img src="<?= base_url('Assets/LandingPage/'); ?>img/blog/blog-2.jpg" class="img-fluid" alt="">
-                        <span class="post-date">July 17</span>
+                        <?php 
+                            if ($pengumuman['type_media'] == '0') {
+                                echo '<img src="' . base_url('Assets/img/pengumuman/' . $pengumuman['nama_media']) . '" class="img-fluid" alt="">';
+                            } else {
+                                echo '<iframe lass="img-fluid" width="100%" height="305" src="' . $pengumuman['nama_media'] . '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                            }
+                        ?>
+                        <span class="post-date"><?= date('d F Y', strtotime($pengumuman['created_at'])); ?></span>
                     </div>
 
                     <div class="post-content d-flex flex-column">
 
-                        <h3 class="post-title">Et repellendus molestiae qui est sed omnis</h3>
-
+                        <h3 class="post-title"><?= $pengumuman['judul_pengumuman']; ?></h3>
                         <div class="meta d-flex align-items-center">
                             <div class="d-flex align-items-center">
-                                <i class="bi bi-person"></i> <span class="ps-2">Mario Douglas</span>
+                                <i class="bi bi-person"></i> <span class="ps-2"><?= $pengumuman['nama_user']; ?></span>
                             </div>
-                            <span class="px-3 text-black-50">/</span>
+                            <span class="px-3 text-black-50">|</span>
                             <div class="d-flex align-items-center">
-                                <i class="bi bi-folder2"></i> <span class="ps-2">Sports</span>
+                                <i class="bi bi-clock"></i> <span
+                                    class="ps-2"><?= date('H:i', strtotime($pengumuman['created_at'])); ?> WIB</span>
                             </div>
                         </div>
-
                         <hr>
-
-                        <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i
+                        <a href="<?= base_url('Pengumuman/detail/' . $pengumuman['id_pengumuman']); ?>"
+                            class="readmore stretched-link"><span>Baca Lebih Lanjut</span><i
                                 class="bi bi-arrow-right"></i></a>
-
                     </div>
-
                 </div>
             </div><!-- End post item -->
-
-            <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                <div class="post-item position-relative h-100">
-
-                    <div class="post-img position-relative overflow-hidden">
-                        <img src="<?= base_url('Assets/LandingPage/'); ?>img/blog/blog-3.jpg" class="img-fluid" alt="">
-                        <span class="post-date">September 05</span>
-                    </div>
-
-                    <div class="post-content d-flex flex-column">
-
-                        <h3 class="post-title">Quia assumenda est et veritati tirana ploder</h3>
-
-                        <div class="meta d-flex align-items-center">
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-person"></i> <span class="ps-2">Lisa Hunter</span>
-                            </div>
-                            <span class="px-3 text-black-50">/</span>
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-folder2"></i> <span class="ps-2">Economics</span>
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i
-                                class="bi bi-arrow-right"></i></a>
-
-                    </div>
-
-                </div>
-            </div><!-- End post item -->
-
+            <?php endforeach;
+            ?>
+            <?php
+            else : ?>
+            <div class="col-lg-12 text-center" data-aos="fade-up" data-aos-delay="100">
+                <p>Tidak ada pengumuman yang tersedia.</p>
+            </div>
+            <?php
+            endif;
+            ?>
         </div>
         <span class="d-block mb-2 text-center mt-4" data-aos="fade-up" data-aos-delay="100">
             <a href="<?= base_url('Pengumuman'); ?>" class="btn btn-primary">Lihat Semua Pengumuman</a>
@@ -589,10 +504,13 @@
 
                     <div class="col-md-6">
                         <div class="info-item" data-aos="fade" data-aos-delay="500">
-                            <i class="bi bi-clock"></i>
-                            <h3>Buka Setiap Hari</h3>
-                            <p>Senin - Jumat</p>
-                            <p>08.00 - 12.00</p>
+                            <i class="bi bi-whatsapp"></i>
+                            <h3>WhatsApp</h3>
+                            <p></p>
+                            <a href="https://wa.me/<?= $data_sekolah['no_wa_sekolah']; ?>"
+                                class="text-decoration-none text-dark"
+                                target="_blank"><?= $data_sekolah['no_wa_sekolah']; ?>
+                            </a>
                         </div>
                     </div><!-- End Info Item -->
 
@@ -656,5 +574,9 @@
 
 </section><!-- /Contact Section -->
 
+<div class="container text-center mt-2">
+    <a href="<?= base_url('Auth'); ?>" class="btn btn-primary"><i class="bi bi-box-arrow-in-right"></i> Login
+        Admin</a>
+</div>
 <!-- Testimonial End -->
 <?= $this->endSection('content'); ?>

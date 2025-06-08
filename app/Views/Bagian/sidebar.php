@@ -77,6 +77,11 @@
             </div>
         </div>
     </li>
+    <li class="nav-item <?= ($active == 'TabelBantu') ? 'active' : ''; ?>">
+        <a class="nav-link" href="<?= base_url('TabelBantu'); ?>">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Data Bantu</span></a>
+    </li>
 
     <li class="nav-item <?= ($active == 'Users') ? 'active' : ''; ?>">
         <a class="nav-link collapsed " href="#" data-toggle="collapse" data-target="#uersMenu" aria-expanded="true"
@@ -93,128 +98,13 @@
             </div>
         </div>
     </li>
-    <li class="nav-item <?= ($active == 'Laporan') ? 'active' : ''; ?>">
+    <!-- <li class="nav-item <?= ($active == 'Laporan') ? 'active' : ''; ?>">
         <a class="nav-link" href="<?= base_url('Laporan/Posyandu'); ?>">
             <i class=" fas fa-fw fa-chart-area"></i>
             <span>Laporan</span></a>
-    </li>
+    </li> -->
 
-    <?php //endif; 
-    ?>
 
-    <?php if (session()->get('role') == 'Kader') : ?>
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item <?= ($active == 'Dashboard') ? 'active' : ''; ?>">
-        <a class="nav-link" href="<?= base_url('Dashboard/Kader'); ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Master Data
-    </div>
-    <li class="nav-item <?= ($active == 'Jadwal') ? 'active' : ''; ?>">
-        <a class="nav-link" href="<?= base_url('Jadwal'); ?>">
-            <i class=" fas fa-fw fa-calendar"></i>
-            <span>Jadwal</span></a>
-    </li>
-
-    <li class="nav-item <?= ($active == 'orang_tua') ? 'active' : ''; ?>">
-        <a class="nav-link" href="<?= base_url('Orang_tua'); ?>">
-            <i class=" fas fa-fw fa-user"></i>
-            <span>Orang Tua</span></a>
-    </li>
-    <li class="nav-item <?= ($active == 'Balita') ? 'active' : ''; ?>">
-        <a class="nav-link" href="<?= base_url('Balita'); ?>">
-            <i class=" fas fa-fw fa-child"></i>
-            <span>Balita</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Kader
-    </div>
-
-    <li class="nav-item <?= ($active == 'Pengecekan') ? 'active' : ''; ?>">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-            aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Pengecekan</span>
-        </a>
-        <div id="collapsePages"
-            class="collapse <?= ($active == 'Pengecekan' || $active == 'histori_pengecekan') ? 'show' : ''; ?>"
-            aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Data Pengecekan</h6>
-                <a class="collapse-item <?= ($active == 'Pengecekan') ? 'active' : ''; ?>"
-                    href="<?= base_url('Pengecekan'); ?>">Pengecekan</a>
-                <a class="collapse-item <?= ($active == 'histori_pengecekan') ? 'active' : ''; ?>"
-                    href="<?= base_url('Pengecekan/histori_pengecekan'); ?>">Histori Pengecekan</a>
-            </div>
-        </div>
-    </li>
-
-    <li class="nav-item <?= ($active == 'Users') ? 'active' : ''; ?>">
-        <a class="nav-link collapsed " href="#" data-toggle="collapse" data-target="#uersMenu" aria-expanded="true"
-            aria-controls="uersMenu">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Users</span>
-        </a>
-        <div id="uersMenu" class="collapse <?= ($active == 'Users') ? 'show' : ''; ?>" aria-labelledby="headingPages"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Data User</h6>
-                <a class="collapse-item <?= ($active == 'Users') ? 'active' : ''; ?>"
-                    href="<?= base_url('Users/user_posyandu'); ?>">User</a>
-            </div>
-        </div>
-    </li>
-    <li class="nav-item <?= ($active == 'Laporan') ? 'active' : ''; ?>">
-        <a class="nav-link" href="<?= base_url('Laporan'); ?>">
-            <i class=" fas fa-fw fa-chart-area"></i>
-            <span>Laporan</span></a>
-    </li>
-
-    <?php endif; 
-    ?>
-
-    <?php if (session()->get('role') == 'Pengguna') : ?>
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item <?= ($active == 'Dashboard') ? 'active' : ''; ?>">
-        <a class="nav-link" href="<?= base_url('Dashboard/Pengguna'); ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
-    <div class="sidebar-heading">
-        Pengguna
-    </div>
-    <li class="nav-item <?= ($active == 'orang_tua') ? 'active' : ''; ?>">
-        <a class="nav-link" href="<?= base_url('Orang_tua/data_diri'); ?>">
-            <i class=" fas fa-fw fa-user"></i>
-            <span>Data Diri</span></a>
-    </li>
-
-    <li class="nav-item <?= ($active == 'Jadwal') ? 'active' : ''; ?>">
-        <a class="nav-link" href="<?= base_url('Jadwal/jadwal_pengecekan'); ?>">
-            <i class=" fas fa-fw fa-calendar"></i>
-            <span>Jadwal</span></a>
-    </li>
-    <li class="nav-item <?= ($active == 'Balita') ? 'active' : ''; ?>">
-        <a class="nav-link" href="<?= base_url('Balita/data_balita'); ?>">
-            <i class=" fas fa-fw fa-child"></i>
-            <span>Balita</span></a>
-    </li>
-    <li class="nav-item <?= ($active == 'Laporan') ? 'active' : ''; ?>">
-        <a class="nav-link" href="<?= base_url('Laporan/Balita'); ?>">
-            <i class=" fas fa-fw fa-chart-area"></i>
-            <span>Laporan</span></a>
-    </li>
-    <?php endif; ?>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

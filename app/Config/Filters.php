@@ -71,7 +71,7 @@ class Filters extends BaseFilters
      */
     public array $globals = [
        'before' => [
-            'middleware' => ['except' => ['Auth','Auth/*','Web','Web/*','/', 'Home', 'Home/*', 'Sejarah', 'Visi']],
+            'middleware' => ['except' => ['Auth','Auth/*','Web','Web/*','/', 'Home', 'Home/*', 'Sejarah', 'Visi', 'Berita', 'Berita/*']],
         ],
         'after' => [
             // 'honeypot',

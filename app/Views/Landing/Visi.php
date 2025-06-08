@@ -1,4 +1,4 @@
-app/Views/Landing/Sejarah.php<?= $this->extend('Landing/Template/index') ?>
+<?= $this->extend('Landing/Template/index') ?>
 <?= $this->section('konten') ?>
 <!-- Page Title -->
 <div class="page-title">

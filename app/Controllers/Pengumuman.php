@@ -8,7 +8,7 @@ class Pengumuman extends BaseController
     public function index() // tampilkan data pengumuman
     {
         $model = new pengumumanModel();
-        $data['pengumuman'] = $model->findAll(); // ambil data pengumuman
+        $data['pengumuman'] = $model->orderBy('created_at', 'DESC')->findAll(); // ambil data pengumuman
         $data['title'] = 'Pengumuman'; // set judul
         $data['active'] = 'Pengumuman'; // set active menu
         return view('Admin/Pengumuman/index', $data); // kirim data ke view
@@ -20,8 +20,9 @@ class Pengumuman extends BaseController
         $type_media = $this->request->getPost('type_media'); // ambil type media
         $tag_pengumuman = $this->request->getPost('tag_pengumuman'); // ambil tag pengumuman
         $id_pengumuman = $tag_pengumuman.'-'.date('YmdHis'); // set id pengumuman
-        $img_thumbnail = $this->request->getFile('img_thumbnail'); // ambil thumbnail pengumuman
-        $img_thumbnail->move('Assets/img/thumbnail'); // pindahkan thumbnail
+        
+        // $img_thumbnail = $this->request->getFile('img_thumbnail'); // ambil thumbnail pengumuman
+        // $img_thumbnail->move('Assets/img/thumbnail'); // pindahkan thumbnail
         if($type_media == '1'){ // jika type media video
             $data = [ // set data
                 'id_pengumuman' => $id_pengumuman,
@@ -30,9 +31,10 @@ class Pengumuman extends BaseController
                 'deskripsi_pengumuman' => $this->request->getPost('deskripsi_pengumuman'),
                 'type_media' => $this->request->getPost('type_media'),
                 'tag_pengumuman' => $this->request->getPost('tag_pengumuman'),
+                'tipe_pengumuman' => $this->request->getPost('tipe_pengumuman'),
                 'nama_media' => $this->request->getPost('link_media'),
                 'status_pengumuman' => '1',
-                'img_thumbnail' => $img_thumbnail->getName(),
+                // 'img_thumbnail' => $img_thumbnail->getName(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
@@ -46,8 +48,9 @@ class Pengumuman extends BaseController
                 'deskripsi_pengumuman' => $this->request->getPost('deskripsi_pengumuman'),
                 'type_media' => $this->request->getPost('type_media'),
                 'tag_pengumuman' => $this->request->getPost('tag_pengumuman'),
+                'tipe_pengumuman' => $this->request->getPost('tipe_pengumuman'),
                 'nama_media' => $file->getName(),
-                'img_thumbnail' => $img_thumbnail->getName(),
+                // 'img_thumbnail' => $img_thumbnail->getName(),
                 'status_pengumuman' => '1',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -73,7 +76,8 @@ class Pengumuman extends BaseController
                 'deskripsi_pengumuman' => $this->request->getPost('deskripsi_pengumuman'),
                 'type_media' => $this->request->getPost('type_media'),
                 'tag_pengumuman' => $this->request->getPost('tag_pengumuman'),
-                'nama_media' => $this->request->getPost('nama_media'),
+                'nama_media' => $this->request->getPost('link_media'),
+                'tipe_pengumuman' => $this->request->getPost('tipe_pengumuman'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
         }else{ // jika type media foto
@@ -85,6 +89,7 @@ class Pengumuman extends BaseController
                     'deskripsi_pengumuman' => $this->request->getPost('deskripsi_pengumuman'),
                     'type_media' => $this->request->getPost('type_media'),
                     'tag_pengumuman' => $this->request->getPost('tag_pengumuman'),
+                    'tipe_pengumuman' => $this->request->getPost('tipe_pengumuman'),
                     'nama_media' => $file->getName(),
                     'updated_at' => date('Y-m-d H:i:s')
                 ];
@@ -97,6 +102,7 @@ class Pengumuman extends BaseController
                     'deskripsi_pengumuman' => $this->request->getPost('deskripsi_pengumuman'),
                     'type_media' => $this->request->getPost('type_media'),
                     'tag_pengumuman' => $this->request->getPost('tag_pengumuman'),
+                    'tipe_pengumuman' => $this->request->getPost('tipe_pengumuman'),
                     'updated_at' => date('Y-m-d H:i:s')
                 ];
             }
@@ -104,8 +110,10 @@ class Pengumuman extends BaseController
         }
 
         $model->update($id, $data); // update data ke tabel pengumuman
-        session()->setFlashdata('success', 'Data Berhasil Diubah'); // set flashdata
-        return redirect()->to('/Pengumuman'); // redirect ke halaman pengumuman
+        return $this->response->setJSON([
+            'status' => '200',
+            'data' => 'Data Pengumuman Berhasil Disimpan'
+        ]);
         
     }
 

@@ -52,7 +52,8 @@ class Sekolah extends BaseController
             'misi_sekolah' => $this->request->getPost('misi_sekolah'),
             'sejarah_sekolah' => $this->request->getPost('sejarah_sekolah'),
             'sambutan_kepala_sekolah' => $this->request->getPost('sambutan_kepala_sekolah'),
-            'jumlah_siswa_sekolah' => $this->request->getPost('jumlah_siswa_sekolah')
+            'jumlah_siswa_sekolah' => $this->request->getPost('jumlah_siswa_sekolah'),
+            'no_wa_sekolah' => $this->request->getPost('no_wa_sekolah')
         ];
         // dd($data);
         $model->update($id_data_sekolah, $data);
