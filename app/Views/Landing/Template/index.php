@@ -68,6 +68,7 @@
                             </li>
                             <li><a
                                     href="<?= $active == 'Home' ? '#pengumuman' : base_url('/#pengumuman'); ?>">Pengumuman</a>
+                            <li><a href="<?= $active == 'Home' ? 'PPDB' : base_url('/PPDB'); ?>">PPDB</a>
                         </ul>
                     </li>
                     <!-- <li><a href="#services">Services</a></li>

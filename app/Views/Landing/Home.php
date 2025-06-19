@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-                <img src="<?= base_url('Assets/img/web/FOTO SMAN 1 BANDAR.png'); ?>" class="img-fluid animated" alt="">
+                <img src="<?= base_url('Assets/img/LOGO_SMP.png'); ?>" class="img-fluid animated" alt="">
             </div>
         </div>
     </div>
@@ -238,7 +238,7 @@
             <?php endforeach;
             ?>
             <span class="d-block mb-2 text-center mt-4" data-aos="fade-up" data-aos-delay="100">
-                <a href="<?= base_url('Pengumuman'); ?>" class="btn btn-primary">Lihat Semua Pengumuman</a>
+                <a href="<?= base_url('Pengumumans'); ?>" class="btn btn-primary">Lihat Semua Pengumuman</a>
             </span>
             <?php
             else : ?>
@@ -290,7 +290,7 @@
             <?php endforeach; 
             ?>
             <div class="col-lg-12 text-center mt-4" data-aos="fade-up" data-aos-delay="400">
-                <a href="<?= base_url('Staff'); ?>" class="btn btn-primary">Lihat Semua Staff</a>
+                <a href="<?= base_url('Staffs'); ?>" class="btn btn-primary">Lihat Semua Staff</a>
             </div><!-- End Card Item -->
             <?php
             else : ?>
@@ -341,7 +341,7 @@
             <?php endforeach; 
             ?>
             <div class="col-lg-12 text-center mt-4" data-aos="fade-up" data-aos-delay="400">
-                <a href="<?= base_url('Fasilitas'); ?>" class="btn btn-primary">Lihat Semua Fasilitas</a>
+                <a href="<?= base_url('Fasilitass'); ?>" class="btn btn-primary">Lihat Semua Fasilitas</a>
             </div><!-- End Card Item -->
             <?php
             else : ?>
@@ -445,7 +445,7 @@
             ?>
             <!-- lihat semua -->
             <div class="col-lg-12 text-center mt-4" data-aos="fade-up" data-aos-delay="400">
-                <a href="<?= base_url('Prestasi'); ?>" class="btn btn-primary">Lihat Semua Prestasi</a>
+                <a href="<?= base_url('Prestasis'); ?>" class="btn btn-primary">Lihat Semua Prestasi</a>
             </div><!-- End Card Item -->
             <?php
             else : ?>
