@@ -57,8 +57,8 @@
                     <li class="dropdown"><a href="#"><span>Profile</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
-                            <li><a href="<?= base_url('Sejarah'); ?>">Seajrah</a></li>
-                            <li><a href="<?= base_url('Visi'); ?>">Visi dan Misi</a></li>
+                            <li><a href="<?= base_url('Sejarah'); ?>">Sejarah</a></li>
+                            <li><a href="<?= base_url('Visi'); ?>">Visi & Misi</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a href="#"><span>Informasi</span> <i

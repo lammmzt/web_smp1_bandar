@@ -72,7 +72,7 @@
                 <a class="collapse-item <?= ($active == 'Prestasi') ? 'active' : ''; ?>"
                     href="<?= base_url('Prestasi'); ?>">Prestasi</a>
                 <a class="collapse-item <?= ($active == 'Pengumuman') ? 'active' : ''; ?>"
-                    href="<?= base_url('Pengumuman'); ?>">Pengumuaman</a>
+                    href="<?= base_url('Pengumuman'); ?>">Pengumuman</a>
 
             </div>
         </div>

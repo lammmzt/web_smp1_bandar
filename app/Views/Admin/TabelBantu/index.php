@@ -105,7 +105,9 @@
                                         data-target="#edit<?= $data['id_tabel_bantu']; ?>"><i class="fas fa-edit"></i>
                                         Edit</a>
                                     <a href="<?= base_url('TabelBantu/hapus/' . $data['id_tabel_bantu']); ?>"
-                                        class="btn btn-danger btn-sm hapus"><i class="fas fa-trash"></i> Hapus</a>
+                                        class="btn btn-danger btn-sm hapus"
+                                        onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i
+                                            class="fas fa-trash"></i> Hapus</a>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
