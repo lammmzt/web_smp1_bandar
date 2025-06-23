@@ -13,7 +13,7 @@ $routes->post('Berita', 'Web::Berita');
 $routes->get('Berita/Detail/(:any)', 'Web::DetailBerita/$1');
 $routes->post('Pengumumans', 'Web::Pengumumans');
 $routes->get('Pengumumans', 'Web::Pengumumans');
-$routes->get('Pengumuman/Detail/(:any)', 'Web::DetailPengumuman/$1');
+$routes->get('Pengumumans/Detail/(:any)', 'Web::DetailPengumuman/$1');
 $routes->get('Staffs', 'Web::Staffs');
 $routes->get('Fasilitass', 'Web::Fasilitass');
 $routes->get('Ekstrakurikuler', 'Web::Ekstrakurikuler');

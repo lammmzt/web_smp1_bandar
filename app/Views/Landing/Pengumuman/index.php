@@ -59,7 +59,7 @@
 
                                 <h2 class="title">
                                     <a
-                                        href="<?= base_url('Pengumuman/Detail/' . $pengumuman['id_pengumuman']); ?>"><?= $pengumuman['judul_pengumuman']; ?></a>
+                                        href="<?= base_url('Pengumumans/Detail/' . $pengumuman['id_pengumuman']); ?>"><?= $pengumuman['judul_pengumuman']; ?></a>
                                 </h2>
 
                                 <div class="meta-top">
@@ -80,7 +80,7 @@
                                     </p>
 
                                     <div class="read-more">
-                                        <a href="<?= base_url('Pengumuman/Detail/' . $pengumuman['id_pengumuman']); ?>"
+                                        <a href="<?= base_url('Pengumumans/Detail/' . $pengumuman['id_pengumuman']); ?>"
                                             class="more-link">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -186,7 +186,7 @@
                             ?>
                         <div>
                             <h4><a
-                                    href="<?= base_url('Pengumuman/Detail/' . $pengumuman['id_pengumuman']); ?>"><?= $pengumuman['judul_pengumuman']; ?></a>
+                                    href="<?= base_url('Pengumumans/Detail/' . $pengumuman['id_pengumuman']); ?>"><?= $pengumuman['judul_pengumuman']; ?></a>
                             </h4>
                             <time
                                 datetime="<?= $pengumuman['created_at']; ?>"><?= date('d M Y', strtotime($pengumuman['created_at'])); ?></time>
