@@ -55,7 +55,7 @@ class TabelBantu extends BaseController
                 ]);
             }
         } elseif ($tipe_data_bantu == 'Link') { // jika tipe data bantu adalah Link
-            $isi_data_bantu = $this->request->getPost('link'); // ambil link
+            $isi_data_bantu = $this->request->getPost('link_media'); // ambil link
         } elseif($tipe_data_bantu == 'Editor Teks') { // jika tipe data bantu adalah Teks
             $isi_data_bantu = $this->request->getPost('teksEditors'); // ambil teks
         } elseif ($tipe_data_bantu == 'Textarea') { // jika tipe data bantu adalah Teks

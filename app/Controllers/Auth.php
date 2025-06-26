@@ -10,6 +10,10 @@ class Auth extends BaseController
         $data['title'] = 'Login'; // membuat judul halaman
         $data['active'] = 'Login'; // membuat link active
         $data['validation'] = \Config\Services::validation(); // membuat validasi form
+        if(session()->get('logged_in')) // jika sudah login
+        {
+            return redirect()->to(base_url('Dashboard')); // mengalihkan ke halaman Dashboard
+        }
         return view('Auth/index', $data); // menampilkan view Auth/login
     }
 

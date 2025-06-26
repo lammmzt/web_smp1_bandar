@@ -192,10 +192,71 @@
     <script src="<?= base_url('Assets/LandingPage/'); ?>vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="<?= base_url('Assets/LandingPage/'); ?>vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="<?= base_url('Assets/LandingPage/'); ?>vendor/swiper/swiper-bundle.min.js"></script>
-
+    <script src="<?= base_url('Assets/'); ?>vendor/jquery/jquery.min.js"></script>
     <!-- Main JS File -->
     <script src="<?= base_url('Assets/LandingPage/'); ?>js/main.js"></script>
+    <script>
+    // add data unique id to local storage and automatic remove wehen day after 1 day
+    function addDataUniqueIdToLocalStorage() {
+        const uniqueId = localStorage.getItem('unique_id');
+        const uniqueIdDate = localStorage.getItem('unique_id_date');
+        const currentDate = new Date();
+        // console.log('Current Date:', currentDate, 'Unique ID Date:', uniqueIdDate);
+        if (uniqueId == null || uniqueId == '') {
+            const newUniqueId = 'UID-' + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem('unique_id', newUniqueId);
+            const date = new Date();
+            localStorage.setItem('unique_id_date', date.toISOString());
+            $.ajax({
+                url: '<?= base_url('saveAktifitasWeb'); ?>',
+                type: 'POST',
+                data: {
+                    unique_id: newUniqueId
+                },
+                dataType: 'json',
+                success: function(response) {
+                    // console.log('Data unique id saved to server:', response);
+                },
+                error: function(xhr, status, error) {
+                    // console.error('Error saving unique id:', error);
+                }
+            });
+        } else {
+            // jika beda hari maka akan menghapus unique_id
+            const storedDate = new Date(uniqueIdDate);
+            if (currentDate.getDate() !== storedDate.getDate() ||
+                currentDate.getMonth() !== storedDate.getMonth() ||
+                currentDate.getFullYear() !== storedDate.getFullYear()) {
+                localStorage.removeItem('unique_id');
+                localStorage.removeItem('unique_id_date');
+                const newUniqueId2 = 'UID-' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('unique_id', newUniqueId2);
+                const date2 = new Date();
+                localStorage.setItem('unique_id_date', date2.toISOString());
+                // console.log('Unique ID expired and removed:', uniqueId);
+                $.ajax({
+                    url: '<?= base_url('Web/saveAktifitasWeb'); ?>',
+                    type: 'POST',
+                    data: {
+                        unique_id: newUniqueId2
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        // console.log('Data unique id saved to server:', response);
+                    },
+                    error: function(xhr, status, error) {
+                        // console.error('Error saving unique id:', error);
+                    }
+                });
+            }
+        }
+    }
 
+    // call when page load
+    $(document).ready(function() {
+        addDataUniqueIdToLocalStorage();
+    });
+    </script>
 </body>
 
 </html>

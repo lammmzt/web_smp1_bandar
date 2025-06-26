@@ -8,8 +8,10 @@ use App\Models\ekskulModel;
 use App\Models\prestasiModel;
 use App\Models\pengumumanModel;
 use App\Models\tabelBantuModel;
+use App\Models\aktifitasWebModel;
 class Web extends BaseController
 {
+   
     public function index(): string
     {
         $model = new dataSekolahModel();
@@ -18,12 +20,14 @@ class Web extends BaseController
         $ekskulModel = new ekskulModel();
         $prestasiModel = new prestasiModel();
         $pengumumanModel = new pengumumanModel();
+        $tabelBantuModel = new tabelBantuModel();
         $data['data_fasilitas'] = $fasilitasModel->getFasilitas(); // ambil data fasilitas
         $data['data_sekolah'] = $model->first(); // ambil data sekolah
         $data['data_staff'] = $staffModel->getStaff(); // ambil data staff
         $data['data_ekskul'] = $ekskulModel->getEkskul(); // ambil data ekskul
         $data['data_pengumuman'] = $pengumumanModel->getPengumuman()->where(['tipe_pengumuman' => '1'])->orderBy('created_at', 'DESC')->limit(3)->findAll(); // ambil data pengumuman
         $data['data_berita'] = $pengumumanModel->getPengumuman()->where(['tipe_pengumuman' => '0'])->orderBy('created_at', 'DESC')->limit(3)->findAll(); // ambil data berita
+        $data['link_profile_sekolah'] = $tabelBantuModel->where('nama_data_bantu', 'link_youtube_profile_sekolah')->first(); // ambil link profile sekolah
         $data['data_prestasi'] = $prestasiModel->getPrestasi(); // ambil data prestasi
         $data['kepala_sekolah'] = $staffModel->where('jabatan_staff', 'Kepala Sekolah')->first(); // ambil data kepala sekolah
         $data['jumlah_tenaga_kependidikan'] = $staffModel->where('jenis_staff', 'Tenaga Kependidikan')->countAllResults(); // hitung jumlah tenaga kependidikan
@@ -196,4 +200,33 @@ class Web extends BaseController
         $data['active'] = 'PPDB'; // set active menu
         return view('Landing/PPDB', $data); // mengirim data ke view
     }
+
+    public function saveAktifitasWeb()
+    {
+        $aktifitasWebModel = new aktifitasWebModel();
+        $unique_id = $this->request->getVar('unique_id');
+
+        $aktifitasWeb = $aktifitasWebModel->getAktifitasWebByMac($unique_id, date('Y-m-d'));
+        if(!$aktifitasWeb){
+            $data_aktifitas = [
+                'mac_address' => $unique_id,
+                'created_at' => date('Y-m-d H:i:s')
+            ];
+            $aktifitasWebModel->save($data_aktifitas);
+            return $this->response->setJSON([
+                'error' => false,
+                'data' => 'Aktifitas web berhasil disimpan',
+                'status' => '200'
+            ]);
+        }else{
+            return $this->response->setJSON([
+                'error' => true,
+                'data' => 'Aktifitas web sudah ada',
+                'status' => '400'
+            ]);
+        }
+        
+       
+    }
+    
 }

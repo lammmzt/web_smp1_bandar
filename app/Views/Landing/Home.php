@@ -13,7 +13,7 @@
                     memberikan pendidikan terbaik bagi siswa-siswi kami.</p>
                 <div class="d-flex flex-column flex-md-row" data-aos="fade-up" data-aos-delay="200">
                     <a href="#about" class="btn-get-started">Mulai</a>
-                    <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8"
+                    <a href="<?= $link_profile_sekolah['isi_data_bantu'] ?>"
                         class="glightbox btn-watch-video d-flex align-items-center justify-content-center ms-0 ms-md-4 mt-4 mt-md-0"><i
                             class="bi bi-play-circle"></i><span>Lihat Video</span></a>
                 </div>
@@ -504,15 +504,17 @@
                     </div><!-- End Info Item -->
 
                     <div class="col-md-6">
-                        <div class="info-item" data-aos="fade" data-aos-delay="500">
-                            <i class="bi bi-whatsapp"></i>
-                            <h3>WhatsApp</h3>
-                            <p></p>
-                            <a href="https://wa.me/<?= $data_sekolah['no_wa_sekolah']; ?>"
-                                class="text-decoration-none text-dark"
-                                target="_blank"><?= $data_sekolah['no_wa_sekolah']; ?>
-                            </a>
-                        </div>
+                        <a href="https://wa.me/<?= $data_sekolah['no_wa_sekolah']; ?>" class="" target="_blank">
+                            <div class="info-item" data-aos="fade" data-aos-delay="500">
+                                <i class="bi bi-whatsapp"></i>
+                                <h3>WhatsApp</h3>
+                                <p></p>
+                                <a href="https://wa.me/<?= $data_sekolah['no_wa_sekolah']; ?>"
+                                    class="text-decoration-none text-dark"
+                                    target="_blank"><?= $data_sekolah['no_wa_sekolah']; ?>
+                                </a>
+                            </div>
+                        </a>
                     </div><!-- End Info Item -->
 
                 </div>

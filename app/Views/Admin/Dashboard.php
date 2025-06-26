@@ -10,7 +10,9 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Jumlah Staff</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <?= $jml_staff; ?>
+                        </div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-user-tie fa-2x text-gray-300"></i>
@@ -28,7 +30,9 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Jumlah Fasilitas</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <?= $jml_fasilitas; ?>
+                        </div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-hotel fa-2x text-gray-300"></i>
@@ -45,7 +49,9 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                             Jumlah Ekskul</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <?= $jml_ekskul; ?>
+                        </div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-futbol fa-2x text-gray-300"></i>
@@ -62,11 +68,13 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            Jumlah Penonton</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                            Jumlah Prestasi</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <?= $jml_prestasi; ?>
+                        </div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                        <i class="fas  fa-trophy fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
@@ -88,6 +96,26 @@
                     <form action="<?= base_url('Dashboard'); ?>" method="post">
                         <select name="bulan" id="bulan" class="form-control" onchange="this.form.submit()">
                             <option value="">Pilih Bulan</option>
+                            <?php
+                            $bulan = [
+                                '01' => 'Januari',
+                                '02' => 'Februari',
+                                '03' => 'Maret',
+                                '04' => 'April',
+                                '05' => 'Mei',
+                                '06' => 'Juni',
+                                '07' => 'Juli',
+                                '08' => 'Agustus',
+                                '09' => 'September',
+                                '10' => 'Oktober',
+                                '11' => 'November',
+                                '12' => 'Desember'
+                            ];
+                            foreach ($bulan as $key => $value) {
+                                $selected = ($key == '') ? 'selected' : '';
+                                echo "<option value='$key' $selected>$value</option>";
+                            }
+                            ?>
 
                         </select>
                     </form>
