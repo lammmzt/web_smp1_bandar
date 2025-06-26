@@ -199,7 +199,9 @@
     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <form enctype="multipart/form-data" class="form_edit" data-id="<?= $data['id_tabel_bantu']; ?>">
+            <!-- <form enctype="multipart/form-data" class="form_edit" data-id="<?= $data['id_tabel_bantu']; ?>"> -->
+            <form enctype="multipart/form-data" class="form_edit" method="post"
+                action="<?= base_url('TabelBantu/ubah'); ?>">
                 <div class="modal-header">
                     <h5 class="modal-title" id="editModalLabel">Edit Data Tabel Bantu</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -207,6 +209,7 @@
                     </button>
                 </div>
                 <div class="modal-body p-4">
+                    <input type="hidden" name="id_tabel_bantu" value="<?= $data['id_tabel_bantu']; ?>">
                     <div class="form-group">
                         <label for="nama_data_bantu">Nama data bantu</label>
                         <input type="text" name="nama_data_bantu" id="nama_data_bantu" class="form-control"
