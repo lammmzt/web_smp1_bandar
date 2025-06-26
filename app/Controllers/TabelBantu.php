@@ -34,7 +34,7 @@ class TabelBantu extends BaseController
         $tipe_data_bantu = $this->request->getPost('tipe_data_bantu'); // ambil tipe data bantu
         if ($tipe_data_bantu == 'Video') { // jika tipe data bantu adalah file
             $file = $this->request->getFile('video'); // ambil file
-            if ($file->isValid() && !$file->hasMoved()) { // cek apakah file valid dan belum dipindah
+            if ($file->isValid() && !$file->hasMoved() && $file->getMimeType() == 'video/mp4') { // cek apakah file valid, belum dipindah, dan tipe file adalah mp4
                 $isi_data_bantu = $file->getRandomName(); // buat nama file acak
                 $file->move('Assets/tabel_bantu/', $isi_data_bantu); // pindahkan file ke folder Assets/video/
             } else {
@@ -67,7 +67,7 @@ class TabelBantu extends BaseController
             ]);
         }
         $data = [ // set data
-            'nama_data_bantu' => $this->request->getPost('nama_data_bantu'),
+            'nama_data_bantu' => $nama_data_bantu,
             'tipe_data_bantu' => $tipe_data_bantu,
             'isi_data_bantu' => $isi_data_bantu,
             'status_data_bantu' =>'1', // set status data bantu aktif
