@@ -123,7 +123,7 @@
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <form enctype="multipart/form-data" method="post" action="<?= base_url('TabelBantu/simpan'); ?>">
+            <form enctype="multipart/form-data" id="formAdd">
                 <div class="modal-header">
                     <h5 class="modal-title" id="addModalLabel">Tambah Data tabel bantu</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -187,7 +187,7 @@
 
                 <div class=" modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary" id="btnSimpan">Simpan</button>
                 </div>
             </form>
         </div>
