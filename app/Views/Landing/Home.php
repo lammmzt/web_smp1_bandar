@@ -151,7 +151,7 @@
                     <div class="post-img position-relative overflow-hidden">
                         <?php 
                              if ($berita['type_media'] == '0') {
-                                echo '<img src="' . base_url('Assets/img/pengumuman/' . $berita['nama_media']) . '" class="img-fluid" alt="" style="height: 305px; object-fit: cover;">';
+                                echo '<img src="' . base_url('Assets/img/pengumuman/' . $berita['nama_media']) . '" class="img-fluid" alt="" style="width;100%; height: 305px; object-fit: cover;">';
                             } else {
                                 echo '<iframe lass="img-fluid" width="100%" height="305" src="' . $berita['nama_media'] . '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
                             }
@@ -216,7 +216,7 @@
                     <div class="post-img position-relative overflow-hidden">
                         <?php 
                             if ($pengumuman['type_media'] == '0') {
-                                echo '<img src="' . base_url('Assets/img/pengumuman/' . $pengumuman['nama_media']) . '" class="img-fluid" alt="" style="height: 305px; object-fit: cover;">';
+                                echo '<img src="' . base_url('Assets/img/pengumuman/' . $pengumuman['nama_media']) . '" class="img-fluid" alt="" style="width;100%; height: 305px; object-fit: cover;">';
                             } else {
                                 echo '<iframe lass="img-fluid" width="100%" height="305" src="' . $pengumuman['nama_media'] . '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
                             }
