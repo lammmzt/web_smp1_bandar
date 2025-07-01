@@ -19,5 +19,6 @@ $routes->get('Fasilitass', 'Web::Fasilitass');
 $routes->get('Ekstrakurikuler', 'Web::Ekstrakurikuler');
 $routes->get('Prestasis', 'Web::Prestasis');
 $routes->get('PPDB', 'Web::PPDB');
+$routes->get('Sambutan', 'Web::Sambutan');
 
 $routes->setAutoRoute(true);

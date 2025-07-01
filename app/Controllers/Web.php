@@ -42,6 +42,8 @@ class Web extends BaseController
     public function Sejarah(): string
     {
         $model = new dataSekolahModel();
+        $dataBantuModel = new tabelBantuModel();
+        $data['foto_sejarah'] = $dataBantuModel->where('nama_data_bantu', 'foto_sejarah')->first(); // ambil data sejarah sekolah
         $data['data_sekolah'] = $model->first(); // ambil data sekolah
         $data['title'] = 'Sejarah SMP NEGERI 1 Bandar'; // set judul
         $data['active'] = 'Sejarah'; // set active menu
@@ -201,6 +203,19 @@ class Web extends BaseController
         return view('Landing/PPDB', $data); // mengirim data ke view
     }
 
+    public function Sambutan(): string
+    {
+        $model = new dataSekolahModel();
+        $staffModel = new staffModel();
+        $tabelBantuModel = new tabelBantuModel();
+        $data['data_sekolah'] = $model->first(); // ambil data sekolah
+        $data['title'] = 'Sambutan Kepala SMP NEGERI 1 Bandar'; // set judul
+        $data['active'] = 'Sambutan'; // set active menu
+        $data['kepala_sekolah'] = $staffModel->where('jabatan_staff', 'Kepala Sekolah')->first(); // ambil data kepala sekolah
+        return view('Landing/Sambutan', $data); // mengirim data ke view
+    
+    }
+
     public function saveAktifitasWeb()
     {
         $aktifitasWebModel = new aktifitasWebModel();
@@ -225,8 +240,6 @@ class Web extends BaseController
                 'status' => '400'
             ]);
         }
-        
-       
     }
     
 }

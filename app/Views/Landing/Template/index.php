@@ -57,6 +57,7 @@
                     <li class="dropdown"><a href="#"><span>Profile</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
+                            <li><a href="<?= base_url('Sambutan'); ?>">Sambutan</a></li>
                             <li><a href="<?= base_url('Sejarah'); ?>">Sejarah</a></li>
                             <li><a href="<?= base_url('Visi'); ?>">Visi & Misi</a></li>
                         </ul>

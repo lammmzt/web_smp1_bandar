@@ -6,9 +6,9 @@
         <div class="container">
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
-                    <h1>Sejarah</h1>
+                    <h1>Sambutan</h1>
                     <p class="mb-0">
-                        Sejarah singkat berdirinya <?= $data_sekolah['nama_sekolah']; ?>
+                        Sambutan Kepala Sekolah <?= $data_sekolah['nama_sekolah']; ?>
                     </p>
                 </div>
             </div>
@@ -34,26 +34,17 @@
                     <article class="article">
 
                         <div class="post-img">
-                            <img src="<?= base_url('Assets/tabel_bantu//' . $foto_sejarah['isi_data_bantu']); ?>"
-                                alt="<?= $data_sekolah['nama_sekolah']; ?>" class="img-fluid"
-                                style="width: 100%; height: auto; object-fit: cover;">
+                            <img src="<?= base_url('Assets/img/staff/'); ?><?= $kepala_sekolah['foto_staff']; ?>"
+                                class="img-fluid" alt=""
+                                style="width: 250px; height: 250px; text-align: center; border-radius: 50%; margin: 15px  auto; display: block;">
                         </div>
 
-                        <h2 class="title">Sejarah <?= $data_sekolah['nama_sekolah']; ?></h2>
+                        <h2 class=" title text-ceter">Sambutan Kepala Sekolah, <?= $kepala_sekolah['nama_staff']; ?>
+                        </h2>
 
-                        <!-- <div class="meta-top">
-                            <ul>
-                                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                        href="blog-details.html">John Doe</a></li>
-                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                        href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
-                                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                        href="blog-details.html">12 Comments</a></li>
-                            </ul>
-                        </div> -->
 
                         <div class="content">
-                            <?= $data_sekolah['sejarah_sekolah']; ?>
+                            <?= $data_sekolah['sambutan_kepala_sekolah']; ?>
                         </div><!-- End post content -->
 
 

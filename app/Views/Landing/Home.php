@@ -1,6 +1,12 @@
 <?= $this->extend('Landing/Template/index') ?>
 <?= $this->section('konten') ?>
-
+<style>
+.kata_sambutan p {
+    margin: 10px 0px !important;
+    padding: 0 !important;
+    justify-content: justify !important;
+}
+</style>
 <!-- Hero Section -->
 <section id="hero" class="hero section">
 
@@ -12,7 +18,7 @@
                 <p data-aos="fade-up" data-aos-delay="100">Sekolah dengan akreditasi A, berkomitmen untuk
                     memberikan pendidikan terbaik bagi siswa-siswi kami.</p>
                 <div class="d-flex flex-column flex-md-row" data-aos="fade-up" data-aos-delay="200">
-                    <a href="#about" class="btn-get-started">Mulai</a>
+                    <!-- <a href="#about" class="btn-get-started">Mulai</a> -->
                     <a href="<?= $link_profile_sekolah['isi_data_bantu'] ?>"
                         class="glightbox btn-watch-video d-flex align-items-center justify-content-center ms-0 ms-md-4 mt-4 mt-md-0"><i
                             class="bi bi-play-circle"></i><span>Lihat Video</span></a>
@@ -33,21 +39,24 @@
         <div class="row gx-0">
             <div class="col-lg-6 d-flex align-items-center mb-2" data-aos="zoom-out" data-aos-delay="200">
                 <img src="<?= base_url('Assets/img/staff/'); ?><?= $kepala_sekolah['foto_staff']; ?>" class="img-fluid"
-                    alt="">
+                    alt=""
+                    style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
             </div>
             <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
                 <div class="content">
                     <h3>Sambutan Kepala Sekolah,</h3>
                     <h2><?= $kepala_sekolah['nama_staff']; ?></h2>
-                    <p>
-                        <?= $data_sekolah['sambutan_kepala_sekolah']; ?>
-                    </p>
-                    <div class="text-center text-lg-start">
-                        <!-- <a href="#"
+
+                    <div class="kata_sambutan">
+                        <?= substr($data_sekolah['sambutan_kepala_sekolah'], 0, 1000); ?> ......
+                    </div>
+
+                    <div class="text-center text-lg-start mt-2">
+                        <a href="<?= base_url('Sambutan'); ?>"
                             class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                             <span>Baca Selengkapnya</span>
                             <i class="bi bi-arrow-right"></i>
-                        </a> -->
+                        </a>
                     </div>
                 </div>
             </div>
@@ -142,7 +151,7 @@
                     <div class="post-img position-relative overflow-hidden">
                         <?php 
                              if ($berita['type_media'] == '0') {
-                                echo '<img src="' . base_url('Assets/img/pengumuman/' . $berita['nama_media']) . '" class="img-fluid" alt="">';
+                                echo '<img src="' . base_url('Assets/img/pengumuman/' . $berita['nama_media']) . '" class="img-fluid" alt="" style="height: 305px; object-fit: cover;">';
                             } else {
                                 echo '<iframe lass="img-fluid" width="100%" height="305" src="' . $berita['nama_media'] . '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
                             }
@@ -191,7 +200,7 @@
 
         </div>
 
-        <hr class="my-5">
+        <hr class="my-5" id="pengumuman">
         <span class="badge bg-danger mb-3" data-aos="fade-up" data-aos-delay="100">Pengumuman</span>
         <div class="row gy-5">
             <?php
@@ -207,7 +216,7 @@
                     <div class="post-img position-relative overflow-hidden">
                         <?php 
                             if ($pengumuman['type_media'] == '0') {
-                                echo '<img src="' . base_url('Assets/img/pengumuman/' . $pengumuman['nama_media']) . '" class="img-fluid" alt="">';
+                                echo '<img src="' . base_url('Assets/img/pengumuman/' . $pengumuman['nama_media']) . '" class="img-fluid" alt="" style="height: 305px; object-fit: cover;">';
                             } else {
                                 echo '<iframe lass="img-fluid" width="100%" height="305" src="' . $pengumuman['nama_media'] . '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
                             }
