@@ -19,7 +19,11 @@ class Pengumuman extends BaseController
         $model = new pengumumanModel(); // panggil model pengumuman
         $type_media = $this->request->getPost('type_media'); // ambil type media
         $tag_pengumuman = $this->request->getPost('tag_pengumuman'); // ambil tag pengumuman
-        $id_pengumuman = $tag_pengumuman.'-'.date('YmdHis'); // set id pengumuman
+        $judul_pengumuman = $this->request->getPost('judul_pengumuman'); // ambil judul pengumuman
+
+        $id_judul = str_replace([' ', "'", '"', '/', '\\'], '_', $judul_pengumuman); // ganti spasi, ' , " , / , \ dengan _
+        $id_judul = strtolower($id_judul); // ubah ke hur
+        $id_pengumuman = $id_judul.'-'.date('YmdHis'); // set id pengumuman
         
         // $img_thumbnail = $this->request->getFile('img_thumbnail'); // ambil thumbnail pengumuman
         // $img_thumbnail->move('Assets/img/thumbnail'); // pindahkan thumbnail
