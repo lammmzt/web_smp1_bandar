@@ -145,7 +145,7 @@
                             ?>
                         <div>
                             <h4><a
-                                    href="<?= base_url('pengumuman/Detail/' . $pengumuman['id_pengumuman']); ?>"><?= $pengumuman['judul_pengumuman']; ?></a>
+                                    href="<?= base_url('pengumumans/Detail/' . $pengumuman['id_pengumuman']); ?>"><?= $pengumuman['judul_pengumuman']; ?></a>
                             </h4>
                             <time
                                 datetime="<?= $pengumuman['created_at']; ?>"><?= date('d M Y', strtotime($pengumuman['created_at'])); ?></time>
