@@ -6,36 +6,6 @@
     padding: 0 !important;
     justify-content: justify !important;
 }
-
-/* add backgournd back in abount Assets/img/background_sambutan.jpg */
-#about {
-    background-image: url('<?= base_url('Assets/img/background_sambutan.jpg'); ?>');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    padding: 60px 0;
-    position: relative;
-    z-index: 1;
-}
-
-#about::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: -1;
-}
-
-#about .content {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 </style>
 <!-- Hero Section -->
 <section id="hero" class="hero section">
@@ -458,47 +428,42 @@
 
     <div class="container">
 
-        <div class="row gy-4 table-responsive">
-            <table id="prestasiTable" class="table table-striped table-bordered my-2" style="width: 100%;">
-                <thead>
-                    <tr>
-                        <th class="text-center">No</th>
-                        <th class="text-center">Foto</th>
-                        <th>Judul Prestasi</th>
-                        <th>Tanggal Prestasi</th>
-                        <th>Deskripsi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php 
-                    if(!empty($data_prestasi)) :
-                        $no = 1;
-                        foreach ($data_prestasi as $prestasi) : ?>
-                    <tr>
-                        <td class="text-center"><?= $no++; ?></td>
-                        <td class="text-center">
-                            <?php if ($prestasi['foto_prestasi'] != '') : ?>
-                            <img src="<?= base_url('Assets/img/prestasi/' . $prestasi['foto_prestasi']); ?>"
-                                alt="<?= $prestasi['judul_prestasi']; ?>" class="img-fluid"
-                                style="width: 100px; height: auto; object-fit: cover;">
-                            <?php else : ?>
-                            <img src="<?= base_url('Assets/img/no-image.png'); ?>" alt="No Image" class="img-fluid"
-                                style="width: 100px; height: auto; object-fit: cover;">
-                            <?php endif; ?>
-                        </td>
-                        <td><?= $prestasi['judul_prestasi']; ?></td>
-                        <td><?= date('d F Y', strtotime($prestasi['tanggal_prestasi'])); ?></td>
-                        <td><?= substr($prestasi['deskripsi_prestasi'], 0, 1000); ?></td>
-                    </tr>
-                    <?php endforeach; 
-                    else : ?>
-                    <tr>
-                        <td colspan="5" class="text-center">Tidak ada prestasi yang tersedia.</td>
-                    </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-
+        <div class="row gy-4">
+            <?php 
+            if(!empty($data_prestasi)) :
+                $no = 1;
+                foreach ($data_prestasi as $prestasi) : 
+                if($no > 3) break; // Batasi hanya 3 prestasi yang ditampilkan
+                $no++;
+            ?>
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card">
+                    <a href="<?= base_url('Assets/img/prestasi/' . $prestasi['foto_prestasi']); ?>" target="_blank"
+                        data-fancybox="gallery" data-caption="<?= $prestasi['judul_prestasi']; ?>">
+                        <img src="<?= base_url('Assets/img/prestasi/' . $prestasi['foto_prestasi']); ?>"
+                            class="img-fluid" alt="">
+                    </a>
+                    <h3><?= $prestasi['judul_prestasi']; ?></h3>
+                    <p><?= $prestasi['deskripsi_prestasi']; ?></p>
+                    <p class="text-muted">
+                        <small>~<?= date('d F Y', strtotime($prestasi['tanggal_prestasi'])); ?>~</small>
+                    </p>
+                </div>
+            </div><!-- End Card Item -->
+            <?php endforeach;
+            ?>
+            <!-- lihat semua -->
+            <div class="col-lg-12 text-center mt-4" data-aos="fade-up" data-aos-delay="400">
+                <a href="<?= base_url('Prestasis'); ?>" class="btn btn-primary">Lihat Semua Prestasi</a>
+            </div><!-- End Card Item -->
+            <?php
+            else : ?>
+            <div class="col-lg-4 text-center" data-aos="fade-up" data-aos-delay="100">
+                <p>Tidak ada prestasi yang tersedia.</p>
+            </div>
+            <?php
+            endif;
+            ?>
 
         </div>
 
@@ -625,24 +590,5 @@
     <a href="<?= base_url('Auth'); ?>" class="btn btn-primary"><i class="bi bi-box-arrow-in-right"></i> Login
         Admin</a>
 </div>
-
-
+<!-- Testimonial End -->
 <?= $this->endSection('content'); ?>
-<?= $this->section('script'); ?>
-<script>
-$(document).ready(function() {
-    $('#prestasiTable').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-        "language": {
-            "emptyTable": "Tidak ada data prestasi yang tersedia."
-        }
-    });
-});
-</script>
-<?= $this->endSection('script'); ?>

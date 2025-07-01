@@ -29,6 +29,8 @@
 
     <!-- Main CSS File -->
     <link href="<?= base_url('Assets/LandingPage/'); ?>css/main.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/v/bs/jq-3.7.0/dt-2.3.2/datatables.min.css" rel="stylesheet"
+        integrity="sha384-/qA/rSMC/E258DEP5UyyRXa4cNYTiVGGqu3f5++Sxp0bh9eCVx7CSNp4S9U+qg+o" crossorigin="anonymous">
 
     <!-- =======================================================
   * Template Name: FlexStart
@@ -258,6 +260,11 @@
         addDataUniqueIdToLocalStorage();
     });
     </script>
+    <!-- Testimonial End -->
+    <script src="https://cdn.datatables.net/v/bs/jq-3.7.0/dt-2.3.2/datatables.min.js"
+        integrity="sha384-WSASJL2VibwbTUgP7Q+MuxGakROneZfkjBd0t6i3LYEkZNAWoJbikeVL8Iyd1n2v" crossorigin="anonymous">
+    </script>
+    <?= $this->renderSection('script'); ?>
 </body>
 
 </html>
