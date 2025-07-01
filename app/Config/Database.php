@@ -28,13 +28,13 @@ class Database extends Config
         'DSN'          => '',
         'hostname'     => 'localhost',
 
-        'username'     => 'root',
-        'password'     => '',
-        'database'     => 'web_sekolah',
+        // 'username'     => 'root',
+        // 'password'     => '',
+        // 'database'     => 'web_sekolah',
 
-        // 'username'     => 'smpn1bandar',
-        // 'password'     => 'smpn1bandar321',
-        // 'database'     => 'smpn1bandar',
+        'username'     => 'smpn1bandar',
+        'password'     => 'smpn1bandar321',
+        'database'     => 'smpn1bandar',
 
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
