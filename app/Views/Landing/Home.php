@@ -229,7 +229,7 @@
                             </div>
                         </div>
                         <hr>
-                        <a href="<?= base_url('Pengumuman/Detail/' . $pengumuman['id_pengumuman']); ?>"
+                        <a href="<?= base_url('Pengumumans/Detail/' . $pengumuman['id_pengumuman']); ?>"
                             class="readmore stretched-link"><span>Baca Lebih Lanjut</span><i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
