@@ -41,7 +41,7 @@
   ======================================================== -->
 </head>
 
-<body class="index-page scrolled">
+<body class="index-page">
 
     <header id="header" class="header d-flex align-items-center fixed-top">
 
