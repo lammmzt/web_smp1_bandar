@@ -199,6 +199,14 @@
     <!-- Main JS File -->
     <script src="<?= base_url('Assets/LandingPage/'); ?>js/main.js"></script>
     <script>
+    // when scroll down add class scrolled to body
+    $(window).on('scroll', function() {
+        if ($(this).scrollTop() > 10) {
+            $('body').addClass('scrolled');
+        } else {
+            $('body').removeClass('scrolled');
+        }
+    });
     // add data unique id to local storage and automatic remove wehen day after 1 day
     function addDataUniqueIdToLocalStorage() {
         const uniqueId = localStorage.getItem('unique_id');
