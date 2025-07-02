@@ -67,10 +67,9 @@
 
   function toggleScrollTop() {
     if (scrollTop) {
-      window.scrollY > 1 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
-  }  
-
+  }
   scrollTop.addEventListener('click', (e) => {
     e.preventDefault();
     window.scrollTo({
@@ -87,7 +86,7 @@
    */
   function aosInit() {
     AOS.init({
-      duration: 10,
+      duration: 600,
       easing: 'ease-in-out',
       once: true,
       mirror: false
@@ -196,7 +195,7 @@
       if (!navmenulink.hash) return;
       let section = document.querySelector(navmenulink.hash);
       if (!section) return;
-      let position = window.scrollY + 200;
+      let position = window.scrollY + 100;
       if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
         document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
         navmenulink.classList.add('active');
