@@ -67,9 +67,10 @@
 
   function toggleScrollTop() {
     if (scrollTop) {
-      window.scrollY > 20 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+      window.scrollY > 1 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
-  }
+  }  
+
   scrollTop.addEventListener('click', (e) => {
     e.preventDefault();
     window.scrollTo({
@@ -86,7 +87,7 @@
    */
   function aosInit() {
     AOS.init({
-      duration: 600,
+      duration: 100,
       easing: 'ease-in-out',
       once: true,
       mirror: false
