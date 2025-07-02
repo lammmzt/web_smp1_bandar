@@ -201,7 +201,7 @@
     <script>
     // when scroll down add class scrolled to body
     $(window).on('scroll', function() {
-        if ($(this).scrollTop() > 10) {
+        if ($(this).scrollTop() > 5) {
             $('body').addClass('scrolled');
         } else {
             $('body').removeClass('scrolled');
