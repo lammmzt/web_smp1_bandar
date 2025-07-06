@@ -49,7 +49,11 @@
                                         class="img-fluid" alt="">
                                 </a>
                                 <h3><?= $fasilitas['nama_fasilitas']; ?></h3>
-                                <p><?= $fasilitas['deskripsi_fasilitas']; ?></p>
+                                <p><?= substr(strip_tags($fasilitas['deskripsi_fasilitas']), 0, 50) . '...'; ?></p>
+                                <div class="d-flex justify-content-between align-items-center mt-2">
+                                    <a href="<?= base_url('Fasilitass/Detail/' . $fasilitas['id_fasilitas']); ?>"
+                                        class="more-link">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                                </div>
                             </div>
                         </div><!-- End Card Item -->
 

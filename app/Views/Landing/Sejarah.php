@@ -34,9 +34,15 @@
                     <article class="article">
 
                         <div class="post-img">
-                            <img src="<?= base_url('Assets/tabel_bantu//' . $foto_sejarah['isi_data_bantu']); ?>"
+                            <?php 
+                           if (!empty($foto_sejarah)) : ?>
+                            <img src="<?= base_url('Assets/tabel_bantu/' . $foto_sejarah['isi_data_bantu']); ?>"
                                 alt="<?= $data_sekolah['nama_sekolah']; ?>" class="img-fluid"
                                 style="width: 100%; height: auto; object-fit: cover;">
+
+                            <?php 
+                            endif;
+                            ?>
                         </div>
 
                         <h2 class="title">Sejarah <?= $data_sekolah['nama_sekolah']; ?></h2>

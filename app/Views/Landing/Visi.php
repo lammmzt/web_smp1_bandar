@@ -32,7 +32,16 @@
                 <div class="container">
 
                     <article class="article">
-
+                        <?php 
+                            if (!empty($foto_visi)) : ?>
+                        <div class="post-img">
+                            <img src="<?= base_url('Assets/tabel_bantu/' . $foto_visi['isi_data_bantu']); ?>"
+                                alt="<?= $data_sekolah['nama_sekolah']; ?>" class="img-fluid"
+                                style="width: 100%; height: auto; object-fit: cover;">
+                        </div>
+                        <?php
+                            endif;
+                            ?>
                         <!-- <div class="post-img">
                             <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
                         </div> -->

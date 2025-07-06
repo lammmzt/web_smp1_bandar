@@ -53,6 +53,8 @@ class Web extends BaseController
     public function Visi(): string
     {
         $model = new dataSekolahModel();
+        $dataBantuModel = new tabelBantuModel();
+        $data['foto_visi'] = $dataBantuModel->where('nama_data_bantu', 'foto_visi')->first(); // ambil data visi sekolah
         $data['data_sekolah'] = $model->first(); // ambil data sekolah
         $data['title'] = 'Sejarah SMP NEGERI 1 Bandar'; // set judul
         $data['active'] = 'Visi & Misi'; // set active menu
@@ -167,6 +169,21 @@ class Web extends BaseController
         return view('Landing/Fasilitas/index', $data); // mengirim data ke view
     }
 
+    public function DetailFasilitass($id_fasilitas): string
+    {
+        $model = new fasilitasModel();
+        $modelSekolah = new dataSekolahModel();
+        $data['detail_fasilitas'] = $model->where(['id_fasilitas' => $id_fasilitas])->first(); // ambil data fasilitas berdasarkan id_fasilitas
+        if(!$data['detail_fasilitas']) {
+            return redirect()->to(base_url('Fasilitass')); // jika tidak ada data fasilitas, redirect ke halaman fasilitas
+        }
+        $data['data_sekolah'] = $modelSekolah->first(); // ambil data sekolah
+        $data['title'] = 'Detail fasilitas SMP NEGERI 1 Bandar'; // set judul
+        $data['data_fasilitas'] = $model->getFasilitas(); // ambil data fasilitas
+        $data['active'] = 'Detail fasilitas'; // set active menu
+        return view('Landing/Fasilitas/detail', $data); // mengirim data ke view
+    }
+    
     public function Ekstrakurikuler(): string
     {
         $model = new ekskulModel();
@@ -176,6 +193,21 @@ class Web extends BaseController
         $data['title'] = 'Ekstrakurikuler SMP NEGERI 1 Bandar'; // set judul
         $data['active'] = 'Ekstrakurikuler'; // set active menu
         return view('Landing/Ekstrakurikuler/index', $data); // mengirim data ke view
+    }
+
+    public function DetailEkstrakurikuler($id_ekskul): string
+    {
+        $model = new ekskulModel();
+        $modelSekolah = new dataSekolahModel();
+        $data['detail_ekskul'] = $model->where(['id_ekskul' => $id_ekskul])->first(); // ambil data ekskul berdasarkan id_ekskul
+        if(!$data['detail_ekskul']) {
+            return redirect()->to(base_url('Ekstrakurikuler')); // jika tidak ada data ekskul, redirect ke halaman ekstrakurikuler
+        }
+        $data['data_sekolah'] = $modelSekolah->first(); // ambil data sekolah
+        $data['title'] = 'Detail Ekstrakurikuler SMP NEGERI 1 Bandar'; // set judul
+        $data['data_ekskul'] = $model->getEkskul(); // ambil data ekskul
+        $data['active'] = 'Detail Ekstrakurikuler'; // set active menu
+        return view('Landing/Ekstrakurikuler/detail', $data); // mengirim data ke view
     }
 
     public function Prestasis(): string

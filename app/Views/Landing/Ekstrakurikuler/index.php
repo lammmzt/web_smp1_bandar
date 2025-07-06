@@ -49,7 +49,11 @@
                                         class="img-fluid" alt="">
                                 </a>
                                 <h3><?= $ekskul['nama_ekskul']; ?></h3>
-                                <p><?= $ekskul['deskripsi_ekskul']; ?></p>
+                                <p><?= substr(strip_tags($ekskul['deskripsi_ekskul']), 0, 50) . '...'; ?></p>
+                                <div class="d-flex justify-content-between align-items-center mt-2">
+                                    <a href="<?= base_url('Ekstrakurikuler/Detail/' . $ekskul['id_ekskul']); ?>"
+                                        class="more-link">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                                </div>
                             </div>
                         </div><!-- End Card Item -->
 
