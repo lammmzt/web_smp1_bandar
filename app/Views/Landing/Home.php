@@ -484,14 +484,16 @@
                         foreach ($data_prestasi as $prestasi) : ?>
                     <tr>
                         <td class="text-center"><?= $no++; ?></td>
-                        <td class="text-center">
+                        <td class="text-center" style="width: 300px; min-width: 300px">
                             <?php if ($prestasi['foto_prestasi'] != '') : ?>
 
-                            <a href="<?= base_url('Assets/img/prestasi/' . $prestasi['foto_prestasi']); ?>"
+                            <a style="width: 300px; min-width: 300px"
+                                href="<?= base_url('Assets/img/prestasi/' . $prestasi['foto_prestasi']); ?>"
                                 target="_blank"> <img
                                     src="<?= base_url('Assets/img/prestasi/' . $prestasi['foto_prestasi']); ?>"
                                     alt="<?= $prestasi['judul_prestasi']; ?>" class="img-fluid"
-                                    style="width: 100px; height: auto; object-fit: cover;">
+                                    style="width: 300px; min-width: 300px; height: auto; object-fit: cover;">
+
                             </a>
                             <?php else : ?>
                             <img src="<?= base_url('Assets/img/no-image.png'); ?>" alt="No Image" class="img-fluid"
