@@ -334,7 +334,6 @@ var deskripsi_pengumuman = new Quill('#deskripsi_pengumuman', {
             ['clean']
         ]
     }
-
 });
 
 // tampilkan edit deskripsi pengumuman di modal edit ketika di klik

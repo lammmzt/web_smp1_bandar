@@ -38,7 +38,7 @@ class Pengumuman extends BaseController
                 'tipe_pengumuman' => $this->request->getPost('tipe_pengumuman'),
                 'nama_media' => $this->request->getPost('link_media'),
                 'status_pengumuman' => '1',
-                // 'img_thumbnail' => $img_thumbnail->getName(),
+                // 'img_thumbnail' => $img_thumbnail->getRandomName(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
@@ -53,8 +53,8 @@ class Pengumuman extends BaseController
                 'type_media' => $this->request->getPost('type_media'),
                 'tag_pengumuman' => $this->request->getPost('tag_pengumuman'),
                 'tipe_pengumuman' => $this->request->getPost('tipe_pengumuman'),
-                'nama_media' => $file->getName(),
-                // 'img_thumbnail' => $img_thumbnail->getName(),
+                'nama_media' => $file->getRandomName(),
+                // 'img_thumbnail' => $img_thumbnail->getRandomName(),
                 'status_pengumuman' => '1',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -94,7 +94,7 @@ class Pengumuman extends BaseController
                     'type_media' => $this->request->getPost('type_media'),
                     'tag_pengumuman' => $this->request->getPost('tag_pengumuman'),
                     'tipe_pengumuman' => $this->request->getPost('tipe_pengumuman'),
-                    'foto_media' => $file->getName(),
+                    'nama_media' => $file->getRandomName(),
                     'updated_at' => date('Y-m-d H:i:s')
                 ];
                 if($data_pengumuman['nama_media'] != ''){ // jika foto pengumuman tidak kosong
