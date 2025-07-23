@@ -44,7 +44,8 @@ class Pengumuman extends BaseController
             ];
         }else{ // jika type media foto
             $file = $this->request->getFile('foto_media'); // ambil foto pengumuman
-            $file->move('Assets/img/pengumuman'); // pindahkan foto
+            $namaFile = $file->getRandomName();
+            $file->move('Assets/img/pengumuman', $namaFile); // pindahkan foto
             $data = [ // set data
                 'id_pengumuman' => $id_pengumuman,
                 'id_user' => session()->get('id_user'),
@@ -53,7 +54,7 @@ class Pengumuman extends BaseController
                 'type_media' => $this->request->getPost('type_media'),
                 'tag_pengumuman' => $this->request->getPost('tag_pengumuman'),
                 'tipe_pengumuman' => $this->request->getPost('tipe_pengumuman'),
-                'nama_media' => $file->getRandomName(),
+                'nama_media' => $namaFile,
                 // 'img_thumbnail' => $img_thumbnail->getName(),
                 'status_pengumuman' => '1',
                 'created_at' => date('Y-m-d H:i:s'),
@@ -87,14 +88,15 @@ class Pengumuman extends BaseController
         }else{ // jika type media foto
             $file = $this->request->getFile('foto_media'); // ambil foto pengumuman
             if($file != ''){ // jika ada foto
-                $file->move('Assets/img/pengumuman'); // pindahkan foto
+                $namaFile = $file->getRandomName();
+                $file->move('Assets/img/pengumuman', $namaFile);
                 $data = [ // set data
                     'judul_pengumuman' => $this->request->getPost('judul_pengumuman'),
                     'deskripsi_pengumuman' => $this->request->getPost('deskripsi_pengumuman'),
                     'type_media' => $this->request->getPost('type_media'),
                     'tag_pengumuman' => $this->request->getPost('tag_pengumuman'),
                     'tipe_pengumuman' => $this->request->getPost('tipe_pengumuman'),
-                    'nama_media' => $file->getRandomName(),
+                    'nama_media' => $namaFile,
                     'updated_at' => date('Y-m-d H:i:s')
                 ];
                 if($data_pengumuman['nama_media'] != ''){ // jika foto pengumuman tidak kosong
