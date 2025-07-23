@@ -85,7 +85,7 @@ class Pengumuman extends BaseController
                 'updated_at' => date('Y-m-d H:i:s')
             ];
         }else{ // jika type media foto
-            $file = $this->request->getFile('nama_media'); // ambil foto pengumuman
+            $file = $this->request->getFile('foto_media'); // ambil foto pengumuman
             if($file != ''){ // jika ada foto
                 $file->move('Assets/img/pengumuman'); // pindahkan foto
                 $data = [ // set data
@@ -94,7 +94,7 @@ class Pengumuman extends BaseController
                     'type_media' => $this->request->getPost('type_media'),
                     'tag_pengumuman' => $this->request->getPost('tag_pengumuman'),
                     'tipe_pengumuman' => $this->request->getPost('tipe_pengumuman'),
-                    'nama_media' => $file->getName(),
+                    'foto_media' => $file->getName(),
                     'updated_at' => date('Y-m-d H:i:s')
                 ];
                 if($data_pengumuman['nama_media'] != ''){ // jika foto pengumuman tidak kosong

@@ -58,8 +58,9 @@
                                             alt="Foto" width="70"></a>
                                 </td>
                                 <td class="align-middle"><?= $value['judul_prestasi']; ?></td>
+                                <td class="align-middle"><?= date('d F Y', strtotime($value['tanggal_prestasi'])); ?>
+                                </td>
                                 <td class="align-middle"><?= $value['deskripsi_prestasi']; ?></td>
-                                <td class="align-middle"><?= $value['tanggal_prestasi']; ?></td>
                                 <td class="text-center align-middle">
                                     <a haref="#" class="btn btn-warning btn-sm" data-toggle="modal"
                                         data-target="#edit<?= $value['id_prestasi']; ?>"> <i class="fas fa-edit"></i>
