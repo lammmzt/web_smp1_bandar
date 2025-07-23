@@ -38,7 +38,7 @@ class Pengumuman extends BaseController
                 'tipe_pengumuman' => $this->request->getPost('tipe_pengumuman'),
                 'nama_media' => $this->request->getPost('link_media'),
                 'status_pengumuman' => '1',
-                // 'img_thumbnail' => $img_thumbnail->getRandomName(),
+                // 'img_thumbnail' => $img_thumbnail->getName(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
@@ -54,7 +54,7 @@ class Pengumuman extends BaseController
                 'tag_pengumuman' => $this->request->getPost('tag_pengumuman'),
                 'tipe_pengumuman' => $this->request->getPost('tipe_pengumuman'),
                 'nama_media' => $file->getRandomName(),
-                // 'img_thumbnail' => $img_thumbnail->getRandomName(),
+                // 'img_thumbnail' => $img_thumbnail->getName(),
                 'status_pengumuman' => '1',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
