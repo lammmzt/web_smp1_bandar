@@ -68,6 +68,10 @@ class Fasilitas extends BaseController
                 ]
             ],
         ]);
+        if(!$validation->withRequest($this->request)->run()) {
+            session()->setFlashdata('errors', 'Nama Fasilitas sudah ada');
+            return redirect()->back()->withInput();
+        }
         if($file != ''){ // jika ada foto
             $file->move('Assets/img/fasilitas'); // pindahkan foto
             $data = [ // set data
