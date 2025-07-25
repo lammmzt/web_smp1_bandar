@@ -29,7 +29,7 @@ class Ekskul extends BaseController
             ],
         ]);
         if (!$validation->withRequest($this->request)->run()) {
-            session()->setFlashdata('errors', 'Nama Ekskul sudah ada');
+            session()->setFlashdata('error', 'Nama Ekskul sudah ada');
             return redirect()->back()->withInput();
         }
         if($file){ // jika ada foto
@@ -68,7 +68,7 @@ class Ekskul extends BaseController
             ],
         ]);
         if (!$validation->withRequest($this->request)->run()) {
-            session()->setFlashdata('errors', 'Nama Ekskul sudah ada');
+            session()->setFlashdata('error', 'Nama Ekskul sudah ada');
             return redirect()->back()->withInput();
         }
         if($file != ''){ // jika ada foto

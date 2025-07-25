@@ -32,7 +32,7 @@ class Users extends BaseController
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
-            session()->setFlashdata('errors', 'Username sudah ada');
+            session()->setFlashdata('error', 'Username sudah ada');
             return redirect()->back()->withInput();
         }
         $data = [ // set data
@@ -66,7 +66,7 @@ class Users extends BaseController
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
-            session()->setFlashdata('errors', 'Username sudah ada');
+            session()->setFlashdata('error', 'Username sudah ada');
             return redirect()->back()->withInput();
         }
         if($password == ''){ // jika password kosong

@@ -31,7 +31,7 @@ class Fasilitas extends BaseController
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
-            session()->setFlashdata('errors', 'Nama Fasilitas sudah ada');
+            session()->setFlashdata('error', 'Nama Fasilitas sudah ada');
             return redirect()->back()->withInput();
         }
         
@@ -69,7 +69,7 @@ class Fasilitas extends BaseController
             ],
         ]);
         if(!$validation->withRequest($this->request)->run()) {
-            session()->setFlashdata('errors', 'Nama Fasilitas sudah ada');
+            session()->setFlashdata('error', 'Nama Fasilitas sudah ada');
             return redirect()->back()->withInput();
         }
         if($file != ''){ // jika ada foto
