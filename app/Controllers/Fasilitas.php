@@ -18,6 +18,23 @@ class Fasilitas extends BaseController
     {
         $model = new fasilitasModel(); // panggil model ekskul
         $file = $this->request->getFile('foto_fasilitas'); // ambil foto ekskul
+        $validation =  \Config\Services::validation();
+        $validation->setRules([
+            'nama_fasilitas' => [
+                'label' => 'Nama Fasilitas',
+                'rules' => 'required|is_unique[fasilitas.nama_fasilitas]',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+                    'is_unique' => '{field} sudah ada'
+                ]
+            ],
+        ]);
+
+        if (!$validation->withRequest($this->request)->run()) {
+            session()->setFlashdata('errors', 'Nama Fasilitas sudah ada');
+            return redirect()->back()->withInput();
+        }
+        
         if($file){ // jika ada foto
             $file->move('Assets/img/fasilitas'); // pindahkan foto
             $data = [ // set data
@@ -40,6 +57,17 @@ class Fasilitas extends BaseController
         $id = $this->request->getPost('id_fasilitas'); // ambil id ekskul
         $file = $this->request->getFile('foto_fasilitas'); // ambil foto ekskul
         $data_fasilitas = $model->find($id); // ambil data ekskul
+        $validation =  \Config\Services::validation();
+        $validation->setRules([
+            'nama_fasilitas' => [
+                'label' => 'Nama Fasilitas',
+                'rules' => 'required|is_unique[fasilitas.nama_fasilitas,id_fasilitas,'.$id.']',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+                    'is_unique' => '{field} sudah ada'
+                ]
+            ],
+        ]);
         if($file != ''){ // jika ada foto
             $file->move('Assets/img/fasilitas'); // pindahkan foto
             $data = [ // set data

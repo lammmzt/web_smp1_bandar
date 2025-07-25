@@ -18,6 +18,23 @@ class Users extends BaseController
     { 
         $uuid = service('uuid'); // panggil library uuid
         $model = new usersModel(); // panggil model users
+        // validasi username
+         $validation =  \Config\Services::validation();
+        $validation->setRules([
+            'username' => [
+                'label' => 'Username',
+                'rules' => 'required|is_unique[users.username]',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+                    'is_unique' => '{field} sudah ada'
+                ]
+            ],
+        ]);
+
+        if (!$validation->withRequest($this->request)->run()) {
+            session()->setFlashdata('errors', 'Username sudah ada');
+            return redirect()->back()->withInput();
+        }
         $data = [ // set data
             'id_user' => $uuid->uuid4()->toString(), // generate uuid
             'username' => $this->request->getPost('username'),
@@ -36,6 +53,22 @@ class Users extends BaseController
         $model = new usersModel(); // panggil model users
         $id = $this->request->getPost('id_user'); // ambil id user
         $password = $this->request->getPost('password'); // ambil password
+        $validation =  \Config\Services::validation();
+        $validation->setRules([
+            'username' => [
+                'label' => 'Username',
+                'rules' => 'required|is_unique[users.username,id_user,' . $id . ']',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+                    'is_unique' => '{field} sudah ada'
+                ]
+            ],
+        ]);
+
+        if (!$validation->withRequest($this->request)->run()) {
+            session()->setFlashdata('errors', 'Username sudah ada');
+            return redirect()->back()->withInput();
+        }
         if($password == ''){ // jika password kosong
             $data = [ // set data
                 'username' => $this->request->getPost('username'),

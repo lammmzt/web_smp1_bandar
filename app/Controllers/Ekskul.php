@@ -17,6 +17,17 @@ class Ekskul extends BaseController
     {
         $model = new ekskulModel(); // panggil model ekskul
         $file = $this->request->getFile('foto_ekskul'); // ambil foto ekskul
+        $validation =  \Config\Services::validation();
+        $validation->setRules([
+            'nama_ekskul' => [
+                'label' => 'Nama Ekskul',
+                'rules' => 'required|is_unique[ekskul.nama_ekskul]',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+                    'is_unique' => '{field} sudah ada'
+                ]
+            ],
+        ]);
         if($file){ // jika ada foto
             $file->move('Assets/img/ekskul'); // pindahkan foto
             $data = [ // set data
@@ -41,6 +52,17 @@ class Ekskul extends BaseController
         $id = $this->request->getPost('id_ekskul'); // ambil id ekskul
         $file = $this->request->getFile('foto_ekskul'); // ambil foto ekskul
         $data_ekskul = $model->find($id); // ambil data ekskul
+        $validation =  \Config\Services::validation();
+        $validation->setRules([
+            'nama_ekskul' => [
+                'label' => 'Nama Ekskul',
+                'rules' => 'required|is_unique[ekskul.nama_ekskul,id_ekskul,'.$id.']',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+                    'is_unique' => '{field} sudah ada'
+                ]
+            ],
+        ]);
         if($file != ''){ // jika ada foto
             $file->move('Assets/img/ekskul'); // pindahkan foto
             $data = [ // set data
