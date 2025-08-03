@@ -96,8 +96,11 @@ class Siswa extends BaseController
             'updated_at' => date('Y-m-d H:i:s')
         ];
         $model->update($id_siswa, $data); // update data siswa
-        session()->setFlashdata('success', 'Status Berhasil Diubah'); // set flashdata
-        return redirect()->to('/Siswa'); // redirect ke halaman siswa
+        return $this->response->setJSON([
+            'error' => false,
+            'data' => 'Status Berhasil Diubah',
+            'status' => '200'
+        ]);
     }
     
 }
