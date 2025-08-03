@@ -88,8 +88,8 @@ class Fasilitas extends BaseController
                 'deskripsi_fasilitas' => $this->request->getPost('deskripsi_fasilitas')
             ];
         }
-        session()->setFlashdata('success', 'Data Berhasil Diubah'); // set flashdata
         $model->update($id, $data); // update data ke tabel ekskul
+        session()->setFlashdata('success', 'Data Berhasil Diubah'); // set flashdata
         return redirect()->to('/Fasilitas'); // redirect ke halaman ekskul
     }
 

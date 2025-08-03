@@ -71,7 +71,7 @@ class Filters extends BaseFilters
      */
     public array $globals = [
        'before' => [
-            'middleware' => ['except' => ['Auth', 'Staffs', 'Pengumumans','TabelBantu','TabelBantu/*', 'Pengumumans/*','Fasilitass', 'Fasilitass/*', 'Prestasis','Ekstrakurikuler', 'Ekstrakurikuler/*', 'Auth/*','Web','Web/*','/', 'Home', 'PPDB','Home/*', 'Sejarah', 'Visi', 'Sambutan','Berita', 'Berita/*']],
+            'middleware' => ['except' => ['Auth', 'Staffs', 'Pengumumans','TabelBantu','TabelBantu/*', 'Pengumumans/*','Fasilitass', 'Fasilitass/*', 'Prestasis','Ekstrakurikuler', 'Ekstrakurikuler/*', 'Auth/*','Web','Web/*','/', 'Home', 'PPDB','Home/*', 'Sejarah', 'Visi', 'Sambutan','Berita', 'Berita/*', 'History_siswa', 'Struktur']],
         ],
         'after' => [
             // 'honeypot',

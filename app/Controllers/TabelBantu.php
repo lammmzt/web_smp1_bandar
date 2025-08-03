@@ -33,6 +33,19 @@ class TabelBantu extends BaseController
         }
         $tipe_data_bantu = $this->request->getPost('tipe_data_bantu'); // ambil tipe data bantu
         if ($tipe_data_bantu == 'Video') { // jika tipe data bantu adalah file
+            // cek apakah file adalah video
+            $this->validate([
+                'video' => [
+                    'uploaded[video]',
+                    'mime_in[video,video/mp4]',
+                ],
+            ]);
+            if($this->validator->hasError('video')) {
+                return $this->response->setJSON([
+                    'status' => '400',
+                    'data' => 'File yang diunggah bukan video'
+                ]);
+            }
             $file = $this->request->getFile('video'); // ambil file
             if ($file->isValid()) { // cek apakah file valid, belum dipindah, dan tipe file adalah mp4
                 $isi_data_bantu = $file->getRandomName(); // buat nama file acak
@@ -44,6 +57,19 @@ class TabelBantu extends BaseController
                 ]);
             }
         }elseif ($tipe_data_bantu == 'Foto') { // jika tipe data bantu adalah foto
+            // cek apakah file adalah foto
+            $this->validate([
+                'foto' => [
+                    'uploaded[foto]',
+                    'mime_in[foto,image/jpg,image/jpeg,image/png]',
+                ],
+            ]);
+            if($this->validator->hasError('foto')) {
+                return $this->response->setJSON([
+                    'status' => '400',
+                    'data' => 'File yang diunggah bukan gambar'
+                ]);
+            }
             $file = $this->request->getFile('foto'); // ambil file
             if ($file->isValid() && !$file->hasMoved()) { // cek apakah file valid dan belum dipindah
                 $isi_data_bantu = $file->getRandomName(); // buat nama file acak

@@ -62,6 +62,7 @@
                             <li><a href="<?= base_url('Sambutan'); ?>">Sambutan</a></li>
                             <li><a href="<?= base_url('Sejarah'); ?>">Sejarah</a></li>
                             <li><a href="<?= base_url('Visi'); ?>">Visi & Misi</a></li>
+                            <li><a href="<?= base_url('Struktur'); ?>">Struktur Organisasi</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a href="#"><span>Informasi</span> <i
@@ -72,6 +73,8 @@
                             <li><a
                                     href="<?= $active == 'Home' ? '#pengumuman' : base_url('/#pengumuman'); ?>">Pengumuman</a>
                             <li><a href="<?= $active == 'Home' ? 'PPDB' : base_url('/PPDB'); ?>">PPDB</a>
+                            <li><a href="<?= $active == 'Home' ? 'History siswa' : base_url('/History_siswa'); ?>">History
+                                    siswa</a>
                         </ul>
                     </li>
                     <!-- <li><a href="#services">Services</a></li>

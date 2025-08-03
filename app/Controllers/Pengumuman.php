@@ -43,6 +43,19 @@ class Pengumuman extends BaseController
                 'updated_at' => date('Y-m-d H:i:s')
             ];
         }else{ // jika type media foto
+            // check validasi foto
+            $this->validate([
+                'foto_media' => [
+                    'uploaded[foto_media]',
+                    'mime_in[foto_media,image/jpg,image/jpeg,image/png]',
+                ]
+            ]);
+            if ($this->validator->hasError('foto_media')) {
+                return $this->response->setJSON([
+                    'status' => '400',
+                    'data' => 'File Foto Tidak Valid'
+                ]);
+            }
             $file = $this->request->getFile('foto_media'); // ambil foto pengumuman
             $namaFile = $file->getRandomName();
             $file->move('Assets/img/pengumuman', $namaFile); // pindahkan foto

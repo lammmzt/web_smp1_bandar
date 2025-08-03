@@ -141,10 +141,10 @@
                                 value="<?= $sekolah['longitude_sekolah']?>">
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6" style="display: none;">
                         <div class="form-group ">
                             <label for="jumlah_siswa_sekolah">Jumlah Siswa</label>
-                            <input type="number" name="jumlah_siswa_sekolah" id="jumlah_siswa_sekolah"
+                            <input type="number" name="jumlah_siswa_sekolah" id="jumlah_siswa_sekolah" hidden
                                 class="form-control" value="<?= $sekolah['jumlah_siswa_sekolah']?>">
                         </div>
                     </div>

@@ -9,6 +9,7 @@ use App\Models\prestasiModel;
 use App\Models\pengumumanModel;
 use App\Models\tabelBantuModel;
 use App\Models\aktifitasWebModel;
+use App\Models\siswaModel;
 class Web extends BaseController
 {
    
@@ -21,6 +22,7 @@ class Web extends BaseController
         $prestasiModel = new prestasiModel();
         $pengumumanModel = new pengumumanModel();
         $tabelBantuModel = new tabelBantuModel();
+        $siswaModel = new siswaModel();
         $data['data_fasilitas'] = $fasilitasModel->getFasilitas(); // ambil data fasilitas
         $data['data_sekolah'] = $model->first(); // ambil data sekolah
         $data['data_staff'] = $staffModel->getStaff(); // ambil data staff
@@ -30,6 +32,7 @@ class Web extends BaseController
         $data['link_profile_sekolah'] = $tabelBantuModel->where('nama_data_bantu', 'link_youtube_profile_sekolah')->first(); // ambil link profile sekolah
         $data['data_prestasi'] = $prestasiModel->getPrestasi(); // ambil data prestasi
         $data['kepala_sekolah'] = $staffModel->where('jabatan_staff', 'Kepala Sekolah')->first(); // ambil data kepala sekolah
+        $data['jumlah_siswa'] = $siswaModel->where('status_siswa', '1')->first(); // hitung jumlah siswa
         $data['jumlah_tenaga_kependidikan'] = $staffModel->where('jenis_staff', 'Tenaga Kependidikan')->countAllResults(); // hitung jumlah tenaga kependidikan
         $data['jumlah_tenaga_pendidik'] = $staffModel->where('jenis_staff', 'Tenaga Pendidik')->countAllResults(); // hitung jumlah tenaga pendidik
         $data['title'] = 'SMP NEGERI 1 Bandar'; // set judul
@@ -59,6 +62,17 @@ class Web extends BaseController
         $data['title'] = 'Sejarah SMP NEGERI 1 Bandar'; // set judul
         $data['active'] = 'Visi & Misi'; // set active menu
         return view('Landing/Visi', $data); // mengirim data ke view
+    }
+
+    public function Struktur(): string
+    {
+        $model = new dataSekolahModel();
+        $dataBantuModel = new tabelBantuModel();
+        $data['foto_visi'] = $dataBantuModel->where('nama_data_bantu', 'struktur_organisasi')->first(); // ambil data visi sekolah
+        $data['data_sekolah'] = $model->first(); // ambil data sekolah
+        $data['title'] = 'Struktur Organnisasi SMP NEGERI 1 Bandar'; // set judul
+        $data['active'] = 'Struktur'; // set active menu
+        return view('Landing/Struktur', $data); // mengirim data ke view
     }
 
     public function Berita(): string
@@ -234,6 +248,17 @@ class Web extends BaseController
         $data['active'] = 'PPDB'; // set active menu
         return view('Landing/PPDB', $data); // mengirim data ke view
     }
+    
+    public function History_siswa(): string
+    {
+        $model = new dataSekolahModel();
+        $siswaModel = new siswaModel();
+        $data['data_siswa'] = $siswaModel->orderBy('created_at', 'DESC')->findAll();
+        $data['data_sekolah'] = $model->first(); // ambil data sekolah
+        $data['title'] = 'History siswa SMP NEGERI 1 Bandar'; // set judul
+        $data['active'] = 'History siswa'; // set active menu
+        return view('Landing/Siswa', $data); // mengirim data ke view
+    }
 
     public function Sambutan(): string
     {
@@ -247,7 +272,6 @@ class Web extends BaseController
         return view('Landing/Sambutan', $data); // mengirim data ke view
     
     }
-
     public function saveAktifitasWeb()
     {
         $aktifitasWebModel = new aktifitasWebModel();

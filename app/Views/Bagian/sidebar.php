@@ -63,6 +63,8 @@
             aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Data Website</h6>
+                <a class="collapse-item <?= ($active == 'Siswa') ? 'active' : ''; ?>"
+                    href="<?= base_url('Siswa'); ?>">Siswa</a>
                 <a class="collapse-item <?= ($active == 'Ekskul') ? 'active' : ''; ?>"
                     href="<?= base_url('Ekskul'); ?>">Ekskul</a>
                 <a class="collapse-item <?= ($active == 'Fasilitas') ? 'active' : ''; ?>"

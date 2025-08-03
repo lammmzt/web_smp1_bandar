@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-                <img src="<?= base_url('Assets/img/LOGO_SMP.png'); ?>" class="img-fluid animated" alt="">
+                <img src="<?= base_url('Assets/img/LOGO_SMP.png'); ?>" class="img-fluid animated" alt="" width="350">
             </div>
         </div>
     </div>
@@ -107,10 +107,12 @@
                 <div class="stats-item d-flex align-items-center w-100 h-100">
                     <i class="bi bi-people color-blue flex-shrink-0" style="color: #007bff;"></i>
                     <div>
-                        <span data-purecounter-start="0"
-                            data-purecounter-end="<?= $data_sekolah['jumlah_siswa_sekolah']; ?>"
+                        <span data-purecounter-start="0" data-purecounter-end="<?= $jumlah_siswa['jumlah_siswa']; ?>"
                             data-purecounter-duration="1" class="purecounter"></span>
-                        <p>Jumlah Siswa</p>
+                        <p>
+                            Jumlah Siswa<br>
+                            <a href="<?= base_url('History_siswa'); ?>">Lihat History Siswa</a>
+                        </p>
                     </div>
                 </div>
             </div><!-- End Stats Item -->
@@ -484,15 +486,15 @@
                         foreach ($data_prestasi as $prestasi) : ?>
                     <tr>
                         <td class="text-center"><?= $no++; ?></td>
-                        <td class="text-center" style="width: 300px; min-width: 300px">
+                        <td class="text-center" style="width: 250px; min-width: 250px">
                             <?php if ($prestasi['foto_prestasi'] != '') : ?>
 
-                            <a style="width: 300px; min-width: 300px"
+                            <a style="width: 250px; min-width: 250px"
                                 href="<?= base_url('Assets/img/prestasi/' . $prestasi['foto_prestasi']); ?>"
                                 target="_blank"> <img
                                     src="<?= base_url('Assets/img/prestasi/' . $prestasi['foto_prestasi']); ?>"
                                     alt="<?= $prestasi['judul_prestasi']; ?>" class="img-fluid"
-                                    style="width: 300px; min-width: 300px; height: auto; object-fit: cover;">
+                                    style="width: 250px; min-width: 250px; height: auto; object-fit: cover;">
 
                             </a>
                             <?php else : ?>
