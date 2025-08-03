@@ -154,3 +154,34 @@
 </div>
 <?php } ?>
 <?= $this->endSection('kontent'); ?>
+<?= $this->section('script'); ?>
+<script>
+$('.status_siswa').change(function() {
+    var id = $(this).attr('id');
+    $.ajax({
+        url: '<?= base_url('Siswa/updateStatus'); ?>',
+        method: 'POST',
+        data: {
+            id_siswa: id,
+        },
+        success: function(response) {
+            if (response.status == '200') {
+                Swal.fire({
+                    title: 'Berhasil',
+                    text: response.data,
+                    icon: 'success',
+                    timer: 2000
+                })
+            } else {
+                Swal.fire({
+                    title: 'Gagal',
+                    text: response.data,
+                    icon: 'error',
+                    timer: 2000
+                })
+            }
+        }
+    });
+});
+</script>
+<?= $this->endSection('script'); ?>

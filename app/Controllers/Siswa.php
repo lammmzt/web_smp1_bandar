@@ -85,8 +85,9 @@ class Siswa extends BaseController
         return redirect()->to('/Siswa'); // redirect ke halaman siswa
     }
 
-    public function updateStatus($id_siswa) // ubah status siswa
+    public function updateStatus() // ubah status siswa
     {
+        $id_siswa = $this->request->getPost('id_siswa');
         $model = new siswaModel(); // panggil model siswa
         // ubah semua status menjadi 0
         $model->where('status_siswa', '1')->update(null, ['status_siswa' => '0']);
