@@ -172,6 +172,7 @@ $('.status_siswa').change(function() {
                     icon: 'success',
                     timer: 2000
                 })
+                window.location.reload();
             } else {
                 Swal.fire({
                     title: 'Gagal',
