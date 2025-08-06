@@ -73,7 +73,7 @@
                             <li><a
                                     href="<?= $active == 'Home' ? '#pengumuman' : base_url('/#pengumuman'); ?>">Pengumuman</a>
                             <li><a href="<?= $active == 'Home' ? 'PPDB' : base_url('/PPDB'); ?>">PPDB</a>
-                            <li><a href="<?= $active == 'Home' ? 'History siswa' : base_url('/History_siswa'); ?>">History
+                            <li><a href="<?= $active == 'Home' ? 'History_siswa' : base_url('/History_siswa'); ?>">History
                                     siswa</a>
                         </ul>
                     </li>
